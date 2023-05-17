@@ -11,7 +11,6 @@ class Video(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     title = db.Column(db.String(100), nullable=False, unique=True)
     mp4 = db.Column(db.String(255), nullable=False)
-    preview_img = db.Column(db.String(255))
     description = description = db.Column(db.String(255))
     created_at = db.Column(db.Date, nullable=False)
     updated_at = db.Column(db.Date, nullable=False)

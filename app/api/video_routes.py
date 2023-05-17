@@ -55,7 +55,6 @@ def post_videos():
         # if the dictionary doesn't have a url key
         # it means that there was an error when we tried to upload
         # so we send back that error message
-            # return render_template("post_form.html", form=form, errors=[upload])
             return upload, 400
         mp4_url = upload["url"]
 
@@ -63,7 +62,7 @@ def post_videos():
             title=form.data['title'],
             user_id= current_user.id,
             mp4=mp4_url,
-            preview_img='',
+            description=form.data['description'],
             created_at=date.today(),
             updated_at=date.today()
         )
