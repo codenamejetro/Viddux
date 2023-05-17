@@ -1,3 +1,7 @@
+.nav-bar {
+  display: flex;
+}
+
 .profile-dropdown {
   position: absolute;
 }
