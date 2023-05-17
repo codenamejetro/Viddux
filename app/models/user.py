@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(40), nullable=False)
     last_name = db.Column(db.String(40), nullable=False)
     profile_pic = db.Column(db.String(255)
-                            # default=
+                            #, default=
                             )
 
     videos = db.relationship('Video', back_populates = 'user', cascade='all, delete-orphan')
