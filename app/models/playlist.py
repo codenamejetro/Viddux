@@ -1,8 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from join_tables import playlist_videos
+from .join_tables import playlist_videos
 
 class Playlist(db.Model):
-
     __tablename__ = 'playlists'
 
     if environment == "production":
@@ -21,5 +20,5 @@ class Playlist(db.Model):
 
 
     user = db.relationship('User', back_populates='playlists')
-    songs = db.relationship(
+    videos = db.relationship(
         'Video', secondary=playlist_videos, back_populates='playlists')
