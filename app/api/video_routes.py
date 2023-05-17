@@ -7,7 +7,7 @@ from datetime import date
 from app.models import db
 from flask import redirect, request
 from .user_routes import user
-from app.aws import (
+from app.api.aws_helpers import (
     upload_mp4_to_s3, upload_image_to_s3, get_unique_filename, remove_mp4_from_s3, remove_image_from_s3
 )
 
