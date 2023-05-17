@@ -1,7 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from join_tables import playlist_videos
 
-class Video(db.Model, UserMixin):
+class Video(db.Model):
     __tablename__ = 'videos'
 
     if environment == "production":
