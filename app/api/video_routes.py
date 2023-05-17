@@ -2,14 +2,14 @@ from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
 from sqlalchemy import desc, asc, func
 from app.models import Video, User
-# from app.forms import VideoForm
+from app.forms.post_video_form import PostVideoForm
 from datetime import date
 from app.models import db
 from flask import redirect, request
-# from .user_routes import user
-# from app.aws import (
-#     upload_file_to_s3, get_unique_filename, remove_file_from_s3
-# )
+from .user_routes import user
+from app.aws import (
+    upload_mp4_to_s3, upload_image_to_s3, get_unique_filename, remove_mp4_from_s3, remove_image_from_s3
+)
 
 videos_routes = Blueprint('videos', __name__, url_prefix="/api/videos")
 
@@ -39,54 +39,40 @@ def get_video(id):
     return video
 
 
-# Post a video
-# @videos_routes.route('/new', methods=['POST'])
-# def post_videos():
-#     form = VideoForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         if "mp3_file" not in request.files:
-#             return {"errors": "video file required"}, 400
-#         image = request.files["mp3_file"]
-#         image.filename = get_unique_filename(image.filename)
-#         upload = upload_file_to_s3(image)
+#Post a video
+@videos_routes.route('/new', methods=['POST'])
+def post_videos():
+    form = PostVideoForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if "mp4" not in request.files:
+            return {"errors": "video file required"}, 400
+        mp4 = request.files["mp4"]
+        mp4.filename = get_unique_filename(mp4.filename)
+        upload = upload_mp4_to_s3(mp4)
 
-#         if "url" not in upload:
-#             # print("UPLOAD[ERRORS]", upload['errors'])
-#         # if the dictionary doesn't have a url key
-#         # it means that there was an error when we tried to upload
-#         # so we send back that error message
-#             # return render_template("post_form.html", form=form, errors=[upload])
-#             return upload, 400
-#         url = upload["url"]
+        if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+            # return render_template("post_form.html", form=form, errors=[upload])
+            return upload, 400
+        mp4_url = upload["url"]
 
-#         # preview_img_file = request.files["preview_img"]
-#         # preview_img_file.filename = get_unique_filename(
-#         #     preview_img_file.filename)
-#         # preview_img_upload = upload_file_to_s3(preview_img_file)
+        new_video = Video(
+            title=form.data['title'],
+            user_id= current_user.id,
+            mp4=mp4_url,
+            preview_img='',
+            created_at=date.today(),
+            updated_at=date.today()
+        )
 
-#         # if "url" not in preview_img_upload:
-#         #     return preview_img_upload, 400
+        db.session.add(new_video)
+        db.session.commit()
+        return new_video.to_dict()
 
-#         # preview_img_url = preview_img_upload["url"]
-
-#         new_video = Video(
-#             name=form.data['name'],
-#             artist_name=form.data['artist_name'],
-#             mp3_file=url,
-#             genre=form.data['genre'],
-#             artist_id=current_user.id,
-#             # preview_img=preview_img_url,
-#             preview_img='',
-#             created_at=date.today(),
-#             updated_at=date.today()
-#         )
-
-#         db.session.add(new_video)
-#         db.session.commit()
-#         return new_video.to_dict()
-
-#     return {"errors": form.errors}
+    return {"errors": form.errors}
 
 
 # Update a video

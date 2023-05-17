@@ -2,8 +2,6 @@ import boto3
 import botocore
 import os
 import uuid
-BUCKET_NAME = os.environ.get("S3_BUCKET")
-S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
 ALLOWED_IMAGE_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif"}
 ALLOWED_VIDEO_EXTENSIONS = {"mp4"}
 
@@ -27,11 +25,11 @@ def get_unique_filename(filename):
     return f"{unique_filename}.{ext}"
 
 
-def upload_file_to_s3(file, acl="public-read"):
+def upload_mp4_to_s3(file, acl="public-read"):
     try:
         s3.upload_fileobj(
             file,
-            BUCKET_NAME,
+            "S3_BUCKET_VIDS",
             file.filename,
             ExtraArgs={
                 "ACL": acl,
@@ -42,4 +40,49 @@ def upload_file_to_s3(file, acl="public-read"):
         # in case the our s3 upload fails
         return {"errors": str(e)}
 
-    return {"url": f"{S3_LOCATION}{file.filename}"}
+    return {"url": f"http://S3_BUCKET_VIDS.s3.amazonaws.com/{file.filename}"}
+
+def upload_image_to_s3(file, acl="public-read"):
+    try:
+        s3.upload_fileobj(
+            file,
+            "S3_BUCKET_IMGS",
+            file.filename,
+            ExtraArgs={
+                "ACL": acl,
+                "ContentType": file.content_type
+            }
+        )
+    except Exception as e:
+        # in case the our s3 upload fails
+        return {"errors": str(e)}
+
+    return {"url": f"http://S3_BUCKET_IMGS.s3.amazonaws.com/{file.filename}"}
+
+def remove_mp4_from_s3(mp4_url):
+    # AWS needs the image file name, not the URL,
+    # so we split that out of the URL
+    key = mp4_url.rsplit("/", 1)[1]
+    print(key)
+    try:
+        s3.delete_object(
+        Bucket='S3_BUCKET_VIDS',
+        Key=key
+        )
+    except Exception as e:
+        return { "errors": str(e) }
+    return True
+
+def remove_image_from_s3(image_url):
+    # AWS needs the image file name, not the URL,
+    # so we split that out of the URL
+    key = image_url.rsplit("/", 1)[1]
+    print(key)
+    try:
+        s3.delete_object(
+        Bucket='S3_BUCKET_IMGS',
+        Key=key
+        )
+    except Exception as e:
+        return { "errors": str(e) }
+    return True
