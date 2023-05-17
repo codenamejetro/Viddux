@@ -13,7 +13,7 @@ def seed_users_playlist_videos():
     video2 = Video(user_id=2, title='How to cake pt2', mp4='howtocakept2.mp4', preview_img='howtocakept2.jpg', description='teaches you how to cake pt2', created_at=date.today(), updated_at = date.today())
     video3 = Video(user_id=3, title='How to dance', mp4='howtodance.mp4', preview_img='howtodance.jpg', description='teaches you how to dance', created_at=date.today(), updated_at = date.today())
 
-    playlist1 = Playlist(user_id=1, name='how-tos', public='True', description='how to videos', created_at=date.today(), updated_at = date.today())
+    playlist1 = Playlist(user_id=1, name='how-tos', public=True, description='how to videos', created_at=date.today(), updated_at = date.today())
 
     db.session.add(demo)
     db.session.add(marnie)

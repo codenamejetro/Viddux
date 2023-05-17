@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 2f783f5e43e9
+Revision ID: 5041f3cd3b0b
 Revises: 
-Create Date: 2023-05-17 10:27:06.590828
+Create Date: 2023-05-17 12:14:29.641469
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '2f783f5e43e9'
+revision = '5041f3cd3b0b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,9 +32,9 @@ def upgrade():
     )
     op.create_table('playlists',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=100), nullable=False),
     sa.Column('public', sa.Boolean(), nullable=False),
-    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.Date(), nullable=False),
     sa.Column('updated_at', sa.Date(), nullable=False),
@@ -45,6 +45,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=100), nullable=False),
+    sa.Column('mp4', sa.String(length=255), nullable=False),
     sa.Column('preview_img', sa.String(length=255), nullable=True),
     sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('created_at', sa.Date(), nullable=False),
