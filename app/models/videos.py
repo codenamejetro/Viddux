@@ -20,4 +20,4 @@ class Video(db.Model):
 
     user = db.relationship('User', back_populates='videos')
     playlists = db.relationship(
-        'Playlist', secondary=playlist_videos, back_populates='songs', cascade='all, delete')
+        'Playlist', secondary=playlist_videos, back_populates='videos', cascade='all, delete')

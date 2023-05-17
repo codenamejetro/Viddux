@@ -20,6 +20,9 @@ class User(db.Model, UserMixin):
                             # default=
                             )
 
+    videos = db.relationship('Video', back_populates = 'user', cascade='all, delete-orphan')
+    playlists = db.relationship('Playlist', back_populates = 'user', cascade='all, delete-orphan')
+
     @property
     def password(self):
         return self.hashed_password
