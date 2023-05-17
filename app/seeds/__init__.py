@@ -20,10 +20,10 @@ def seed():
         undo_videos
         undo_playlists
         undo_playlist_videos
-    seed_users
-    seed_videos
-    seed_playlists
-    seed_playlist_videos
+    seed_users()
+    seed_videos()
+    seed_playlists()
+    seed_playlist_videos()
     # Add other seed functions here
 
 

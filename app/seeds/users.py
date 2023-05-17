@@ -16,9 +16,9 @@ def seed_users():
     db.session.commit()
 
 def seed_videos():
-    video1 = Video(user_id=2, title='How to cake', mp4='howtocake.mp4', preview_img='howtocake.jpg', description='teaches you how to cake', created_at=date.today(), updated_at = date.today())
-    video2 = Video(user_id=2, title='How to cake pt2', mp4='howtocakept2.mp4', preview_img='howtocakept2.jpg', description='teaches you how to cake pt2', created_at=date.today(), updated_at = date.today())
-    video3 = Video(user_id=3, title='How to dance', mp4='howtodance.mp4', preview_img='howtodance.jpg', description='teaches you how to dance', created_at=date.today(), updated_at = date.today())
+    video1 = Video(user_id=2, title='How to cake', mp4='howtocake.mp4', description='teaches you how to cake', created_at=date.today(), updated_at = date.today())
+    video2 = Video(user_id=2, title='How to cake pt2', mp4='howtocakept2.mp4', description='teaches you how to cake pt2', created_at=date.today(), updated_at = date.today())
+    video3 = Video(user_id=3, title='How to dance', mp4='howtodance.mp4', description='teaches you how to dance', created_at=date.today(), updated_at = date.today())
 
     db.session.add(video1)
     db.session.add(video2)
