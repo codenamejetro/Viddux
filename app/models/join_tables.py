@@ -9,4 +9,4 @@ playlist_videos = db.Table('playlist_videos',
 )
 
 if environment == 'production':
-    playlist_songs.schema = SCHEMA
+    playlist_videos.schema = SCHEMA
