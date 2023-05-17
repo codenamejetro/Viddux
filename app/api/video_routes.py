@@ -25,17 +25,18 @@ def get_all_videos():
     return {"videos": [video for video in res]}
 
 
-#Get a video by id
-# @videos_routes.route('/<int:id>')
-# def get_video(id):
-#     video = Video.query.get(id)
-#     artist = User.query.get(video.artist_id)
-#     video = video.to_dict()
-#     artist = artist.to_dict()
-#     video['artist'] = artist
-#     # print('video in videos routes', video)
+# Get a video by id
+@videos_routes.route('/<int:id>')
+def get_video(id):
+    video = Video.query.get(id)
+    creator = User.query.get(video.user_id)
+    video = video.to_dict()
+    creator = creator.to_dict()
+    print('VIDEOOOOOOOOOOOOOOOOOOOOO', creator)
+    video['creator'] = creator
+    # print('video in videos routes', video)
 
-#     return video
+    return video
 
 
 # Post a video
