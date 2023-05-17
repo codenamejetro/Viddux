@@ -12,7 +12,6 @@ class Playlist(db.Model):
     public = db.Column(db.Boolean, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('users.id')), nullable=False)
-    # song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('songs.id')), nullable = False)
     description = db.Column(db.String(255))
 
     created_at = db.Column(db.Date, nullable=False)
