@@ -1,1 +1,6 @@
-/* TODO Add site wide styles */
+body {
+    min-height: 44rem;
+    border: 1px solid purple;
+    /* background-color: #0f0f0f; */
+
+}

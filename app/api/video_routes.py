@@ -19,7 +19,12 @@ def get_all_videos():
     videos = Video.query.order_by(desc(Video.created_at)).all()
     res = []
     for video in videos:
+        creator = User.query.get(video.user_id)
         video = video.to_dict()
+        creator = creator.to_dict()
+        video['user_profile_pic'] = creator['profile_pic']
+        video['user_username'] = creator['username']
+        # video['user_profile_pic'] = creator.profile_pic
         res.append(video)
 
     return {"videos": [video for video in res]}

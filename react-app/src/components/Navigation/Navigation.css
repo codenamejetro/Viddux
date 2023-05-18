@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-top: .5rem;
+  padding-top: .2rem;
 }
 
 .navbar-modal-menu {
@@ -12,14 +12,14 @@
   margin: 0 1rem;
 }
 
-.navbar-home-button {
+.navbar-left {
   display: flex;
-  margin-right: 5rem;
+  /* margin-right: 5rem; */
 }
 
 .navbar-play {
   margin-left: 1rem;
-  margin-right: .1rem;
+  margin-right: .2rem;
 }
 
 .navbar-site-name {
@@ -34,8 +34,121 @@
   margin-left: .2rem;
 }
 
+.navbar-middle {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  padding: 0 8px;
+  border-radius: 12px;
+  border: 1px solid gray;
+}
+
+.navbar-middle-form {
+  /* border: 1px solid red; */
+}
+
+.navbar-search-bar-input {
+  width: 30rem;
+  border-style: none;
+}
+
+.navbar-search-bar-input:focus {
+  outline: none;
+}
+
+.navbar-search-bar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: none;
+  background-color: gray;
+  height: 100%;
+  width: 3rem;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  width: 5rem;
+  margin-left: 10rem;
+  margin-right: 2rem;
+}
+
+.navbar-right-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  width: 10rem;
+}
+
+.navbar-upload {
+  font-size: 24px;
+  /* height: 100%; */
+}
+
 .profile-dropdown {
+  /* display: flex;
+  flex-direction: column; */
+
   position: absolute;
+  top: 1.6rem;
+  right: 2.5rem;
+  min-height: 2rem;
+
+}
+
+.profile-dropdown-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  /* align-items: center; */
+  min-width: 12rem;
+  height: 7rem;
+  border-radius: 12px;
+  padding: 8px 0;
+  border: 1px solid gray;
+}
+
+.profile-dropdown-inner-li {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  padding: 6px;
+  height: 192px;
+
+  /* border: 1px solid red; */
+}
+
+.profile-dropdown-inner-li:hover {
+  background-color: lightgray;
+}
+
+.profile-dropdown-inner-li>i {
+  margin: 0 1rem;
+
+}
+
+/* .profile-dropdown-loggedout {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  border-radius: 12px;
+  border: 1px solid gray;
+} */
+
+/* .profile-dropdown-loggedout-button {
+  text-decoration: none;
+  color: black;
+} */
+/* .profile-dropdown-loggedout  { */
+/* border-style: none; */
+/* } */
+
+.profile-dropdown {
+  list-style: none;
+
 }
 
 .hidden {

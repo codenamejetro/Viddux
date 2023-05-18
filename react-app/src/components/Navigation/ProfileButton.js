@@ -4,6 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -45,25 +46,36 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.email}</li>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
+            <div>
+
+            </div>
+            <div className="profile-dropdown-inner">
+              <NavLink className="profile-dropdown-inner-li" to='/profile'>
+                <i className="fa-solid fa-image-portrait"></i>
+                <div>&nbsp;Your channel</div>
+              </NavLink>
+              <li className="profile-dropdown-inner-li">
+                <i className="fa-solid fa-paint-roller"></i>
+                <div>Appearance</div>
+              </li>
+              <li className="profile-dropdown-inner-li" onClick={handleLogout}>
+                <i className="fa-solid fa-arrow-right-from-bracket"></i>
+                <div>Sign Out</div>
+              </li>
+            </div>
           </>
         ) : (
           <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
+            <div className="profile-dropdown-inner">
+              <NavLink className='profile-dropdown-inner-li' to='/login'>
+                <i className="fa-solid fa-right-to-bracket"></i>
+                <div>Log in</div>
+              </NavLink>
+              <NavLink className='profile-dropdown-inner-li' to='/signup'>
+                <i className="fa-solid fa-user"></i>
+                <div>Sign up</div>
+              </NavLink>
+            </div>
           </>
         )}
       </ul>

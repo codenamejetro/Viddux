@@ -25,7 +25,7 @@ class Video(db.Model):
             'user_id': self.user_id,
             'title': self.title,
             'mp4': self.mp4,
-            'preview_img': self.preview_img,
+            # 'preview_img': self.preview_img,
             'description': self.description,
             "created_at": self.created_at,
             "updated_at": self.updated_at
