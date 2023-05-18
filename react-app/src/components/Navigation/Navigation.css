@@ -92,7 +92,7 @@
   flex-direction: column; */
 
   position: absolute;
-  top: 1.6rem;
+  top: 1.5rem;
   right: 2.5rem;
   min-height: 2rem;
 
@@ -107,6 +107,7 @@
   height: 7rem;
   border-radius: 12px;
   padding: 8px 0;
+  background-color: gray;
   border: 1px solid gray;
 }
 

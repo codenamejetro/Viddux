@@ -1,3 +1,23 @@
-.home-video-wrapper {
+.home-single-video-wrapper {
+    display: flex;
+    flex-direction: column;
     border: 1px solid purple;
+    height: fit-content;
+}
+
+.home-single-video-bottom {
+    display: flex;
+}
+
+.home-single-video-bottom > img {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 20px;
+    border: 1px solid red;
+    margin-right: 1rem;
+}
+
+.home-single-video-bottom-right {
+    display: flex;
+    flex-direction: column;
 }

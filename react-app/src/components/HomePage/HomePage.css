@@ -9,6 +9,7 @@
 
 .home-wrapper-inner {
     display: flex;
+    justify-content: space-around;
     flex-flow: row wrap;
     min-height: 38rem;
     border: 1px solid red;
