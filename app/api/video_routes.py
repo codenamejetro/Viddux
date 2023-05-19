@@ -19,12 +19,7 @@ def get_all_videos():
     videos = Video.query.order_by(desc(Video.created_at)).all()
     res = []
     for video in videos:
-        creator = User.query.get(video.user_id)
         video = video.to_dict()
-        creator = creator.to_dict()
-        video['user_profile_pic'] = creator['profile_pic']
-        video['user_username'] = creator['username']
-        # video['user_profile_pic'] = creator.profile_pic
         res.append(video)
 
     return {"videos": [video for video in res]}
@@ -50,23 +45,24 @@ def post_videos():
     form = PostVideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        if "mp4" not in request.files:
-            return {"errors": "video file required"}, 400
-        mp4 = request.files["mp4"]
-        mp4.filename = get_unique_filename(mp4.filename)
-        upload = upload_mp4_to_s3(mp4)
+        # if "mp4" not in request.files:
+        #     return {"errors": "video file required"}, 400
+        # mp4 = request.files["mp4"]
+        # mp4.filename = get_unique_filename(mp4.filename)
+        # upload = upload_mp4_to_s3(mp4)
 
-        if "url" not in upload:
-        # if the dictionary doesn't have a url key
-        # it means that there was an error when we tried to upload
-        # so we send back that error message
-            return upload, 400
-        mp4_url = upload["url"]
+        # if "url" not in upload:
+        # # if the dictionary doesn't have a url key
+        # # it means that there was an error when we tried to upload
+        # # so we send back that error message
+        #     # return render_template("post_form.html", form=form, errors=[upload])
+        #     return upload, 400
+        # mp4_url = upload["url"]
 
         new_video = Video(
             title=form.data['title'],
             user_id= current_user.id,
-            mp4=mp4_url,
+            mp4=form.data['mp4'],
             description=form.data['description'],
             created_at=date.today(),
             updated_at=date.today()

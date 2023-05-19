@@ -6,6 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import MyVideos from "./components/ProfilePages/MyVideos";
+import MyPlaylists from "./components/ProfilePages/MyPlaylists";
 
 function App() {
   const dispatch = useDispatch();
@@ -21,6 +23,12 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route exact path='/profile/videos'>
+            <MyVideos />
+          </Route>
+          <Route exact path='/profile/playlists'>
+            <MyPlaylists />
           </Route>
           <Route exact path="/login" >
             <LoginFormPage />

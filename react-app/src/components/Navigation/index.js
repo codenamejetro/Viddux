@@ -35,7 +35,7 @@ function Navigation({ isLoaded }) {
 				{isLoaded && (
 					<div className='navbar-right'>
 						<div className='navbar-right-inner'>
-							<NavLink to='/studio'>
+							<NavLink to='/profile/videos'>
 								<i className="navbar-upload fa-solid fa-video"></i>
 							</NavLink>
 							<ProfileButton user={sessionUser} />

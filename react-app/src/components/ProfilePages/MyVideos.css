@@ -1,0 +1,80 @@
+.my-videos-container {
+    display: flex;
+    height: 46rem;
+    /* margin-top: .1rem; */
+}
+
+.my-videos-nav {
+    position: fixed;
+    min-height: 46rem;
+    width: 15rem;
+    /* border: 1px solid red; */
+
+}
+
+.my-videos-nav-channel {
+    display: flex;
+    flex-direction: column;
+    height: 12rem;
+    padding: 1rem;
+    /* border: 1px solid blue; */
+
+}
+
+.my-videos-nav-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid blue; */
+
+}
+.my-videos-nav-image > img {
+    height: 8rem;
+    width: 8rem;
+    border-radius: 100px;
+    /* border: 1px solid blue; */
+}
+
+.my-videos-nav-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.my-videos-nav-name {
+    display: flex;
+    justify-content: center;
+    margin-top: .4rem;
+}
+
+.my-videos-nav-buttons {
+    min-height: 32rem;
+    /* border: 1px solid blue; */
+}
+
+
+
+.my-videos-content {
+    margin-left: 15.1rem;
+    height: 100%;
+    width: 100%;
+    border: 1px solid blue;
+}
+
+.my-videos-content-top {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid gray;
+}
+
+.my-videos-content-toggle {
+    display: flex;
+    justify-content: space-between;
+    width: 10%;
+    /* border: 1px solid purple; */
+}
+
+.my-videos-content-bottom {
+    min-height: 86%;
+    border: 1px solid blue;
+}
