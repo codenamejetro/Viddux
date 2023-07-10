@@ -1,14 +1,18 @@
-const VideoBar = () => {
-    return (
-        <div className="video-bar-container">
-            <div className="">
-                navlink to video details
-            </div>
-            <div className="video-bar-title">
-                navlink to video details
-            </div>
-            <div className="video-bar-date">
+import './VideoBar.css'
 
+const VideoBar = ({ vid }) => {
+    return (
+        <div className='video-bar-outercontainer'>
+            <div className="video-bar-container">
+                <div className="video-bar-vid">
+                    <video src={vid.mp4} > </video>
+                </div>
+                <div className="video-bar-title">
+                    {vid.title}
+                </div>
+                <div className="video-bar-date">
+                    {vid.created_at}
+                </div>
             </div>
         </div>
     )

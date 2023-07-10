@@ -48,7 +48,7 @@ const MyVideos = () => {
 
                 <div className='my-videos-content-bottom'>
                     {allMyVids.map((vid) => {
-                        return <VideoBar />
+                        return <VideoBar vid={vid}/>
                     })}
                 </div>
             </div>

@@ -1,0 +1,15 @@
+.video-bar-outercontainer{
+    padding: 1rem;
+    border: 1px solid red;
+}
+
+.video-bar-container {
+    display: flex;
+    /* border: 1px solid red; */
+}
+
+.video-bar-vid {
+    height: 5rem;
+    width: 8rem;
+    /* border: 1px solid red; */
+}
