@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import MyVideos from "./components/ProfilePages/MyVideos";
 import MyPlaylists from "./components/ProfilePages/MyPlaylists";
+import ProtectedRoute from './components/auth/ProtectedRoute'
 
 function App() {
   const dispatch = useDispatch();
@@ -24,12 +25,15 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route exact path='/profile/videos'>
+          <ProtectedRoute path='/profile/videos'>
             <MyVideos />
-          </Route>
-          <Route exact path='/profile/playlists'>
+          </ProtectedRoute>
+          {/* <Route exact path='/profile/videos'>
+            <MyVideos />
+          </Route> */}
+          <ProtectedRoute exact path='/profile/playlists'>
             <MyPlaylists />
-          </Route>
+          </ProtectedRoute>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>

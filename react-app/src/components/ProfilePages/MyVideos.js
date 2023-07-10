@@ -1,14 +1,24 @@
 import { useDispatch, useSelector } from 'react-redux'
 import './MyVideos.css'
 import { useEffect } from 'react'
+import { getAllVideosThunk } from '../../store/videos'
+import VideoBar from './VideoBar'
 
 const MyVideos = () => {
     const dispatch = useDispatch()
     const currUser = useSelector(state => state.session.user)
-    console.log("4uewhg4fifewfefef", currUser)
+    // console.log("Current User Obj", currUser)
+    const allVids = useSelector(state => state.videos.allVideos)
+    const allVidsArr = Object.values(allVids)
+    // console.log("All videos", allVidsArr)
+
+    const allMyVids = allVidsArr.filter(vid => {
+        return vid.user_id === currUser.id
+    })
+    console.log("All my videos", allMyVids)
 
     useEffect(() => {
-
+        dispatch(getAllVideosThunk())
     }, [dispatch])
     return (
 
@@ -22,7 +32,7 @@ const MyVideos = () => {
                     <div className='my-videos-nav-name'>{currUser.first_name}  {currUser.last_name}</div>
                 </div>
                 <div className='my-videos-nav-buttons'>
-                    fß
+                    Content
                 </div>
             </div>
             <div className='my-videos-content'>
@@ -37,7 +47,9 @@ const MyVideos = () => {
                 </div>
 
                 <div className='my-videos-content-bottom'>
-                    {/* each video */}
+                    {allMyVids.map((vid) => {
+                        return <VideoBar />
+                    })}
                 </div>
             </div>
         </div>
