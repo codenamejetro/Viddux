@@ -1,8 +1,9 @@
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
 import './HomeSingleVid.css'
 
 const HomeSingleVid = ({ vid }) => {
     return (
-        <div className='home-single-video-wrapper'>
+        <NavLink className='home-single-video-wrapper' to={`videos/${vid.id}`}>
             <video className='home-single-video' src={vid.mp4}></video>
             <div className='home-single-video-bottom'>
                 <img src='ff' />
@@ -12,7 +13,7 @@ const HomeSingleVid = ({ vid }) => {
                     <div className='home-single-video-created'>{vid.created_at}</div>
                 </div>
             </div>
-        </div>
+        </NavLink>
     )
 }
 

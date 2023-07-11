@@ -9,6 +9,7 @@ import HomePage from "./components/HomePage";
 import MyVideos from "./components/ProfilePages/MyVideos";
 import MyPlaylists from "./components/ProfilePages/MyPlaylists";
 import ProtectedRoute from './components/auth/ProtectedRoute'
+import VideoPage from "./components/VideoPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route exact path='/video/:videoId'>
+            <VideoPage />
           </Route>
           <ProtectedRoute path='/profile/videos'>
             <MyVideos />
