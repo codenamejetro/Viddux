@@ -1,0 +1,22 @@
+.video-page-outerwrapper {
+    height: 100%;
+    margin-top: 3rem;
+    padding: 1rem;
+}
+
+.video-page-innerwrapper {
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    border: 1px solid red;
+}
+
+.video-page-video {
+
+    border: 1px solid blue;
+}
+
+.video-page-videodetails {
+    height: 4rem;
+    border: 1px solid black;
+}

@@ -26,7 +26,7 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route exact path='/video/:videoId'>
+          <Route exact path='/videos/:videoId'>
             <VideoPage />
           </Route>
           <ProtectedRoute path='/profile/videos'>

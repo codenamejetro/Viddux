@@ -3,6 +3,8 @@ import './MyVideos.css'
 import { useEffect } from 'react'
 import { getAllVideosThunk } from '../../store/videos'
 import VideoBar from './VideoBar'
+import OpenModalButton from '../OpenModalButton'
+import UploadVideo from '../UploadVideo'
 
 const MyVideos = () => {
     const dispatch = useDispatch()
@@ -40,15 +42,24 @@ const MyVideos = () => {
                     <h2>
                         Channel content
                     </h2>
-                    <div className='my-videos-content-toggle' >
-                        <div>Videos</div>
-                        <div>Playlists</div>
+                    <div className='my-videos-content-bottom'>
+                        <div className='my-videos-content-toggle' >
+                            <div>Videos</div>
+                            <div>Playlists</div>
+                        </div>
+                        <div className='my-videos-content-upload'>
+                            <div>
+                                <OpenModalButton
+                                    buttonText="Upload"
+                                    modalComponent={<UploadVideo />} />
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <div className='my-videos-content-bottom'>
                     {allMyVids.map((vid) => {
-                        return <VideoBar vid={vid}/>
+                        return <VideoBar vid={vid} />
                     })}
                 </div>
             </div>

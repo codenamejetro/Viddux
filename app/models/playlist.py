@@ -25,10 +25,14 @@ class Playlist(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
             'name': self.name,
             'public': self.public,
             'description': self.description,
             "created_at": self.created_at,
-            "updated_at": self.updated_at
+            "updated_at": self.updated_at,
+            "user": {
+                "username": self.user.username,
+                "id": self.user.id
+            },
+            "song": [song.to_dict() for song in self.song]
         }

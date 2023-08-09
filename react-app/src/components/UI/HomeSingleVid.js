@@ -3,7 +3,7 @@ import './HomeSingleVid.css'
 
 const HomeSingleVid = ({ vid }) => {
     return (
-        <NavLink className='home-single-video-wrapper' to={`videos/${vid.id}`}>
+        <NavLink className='home-single-video-wrapper' to={`/videos/${vid.id}`}>
             <video className='home-single-video' src={vid.mp4}></video>
             <div className='home-single-video-bottom'>
                 <img src='ff' />

@@ -44,6 +44,7 @@ def get_video(id):
 def post_videos():
     form = PostVideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    # print('THIS IS PRINT POST VIDEO')
     if form.validate_on_submit():
         # if "mp4" not in request.files:
         #     return {"errors": "video file required"}, 400
@@ -76,12 +77,12 @@ def post_videos():
 
 
 # Update a video
-# @videos_routes.route('/<int:id>', methods=["PUT"])
-# def update_video(id):
-#     form = VideoForm()
-#     form['csrf_token'].data = request.cookies['csrf_token']
+@videos_routes.route('/<int:id>', methods=["PUT"])
+def update_video(id):
+    form = PostVideoForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-#     if form.validate_on_submit():
+    if form.validate_on_submit():
 #         if "mp3_file" not in request.files:
 #             return {"errors": "video file required"}, 400
 #         image = request.files["mp3_file"]
@@ -98,43 +99,42 @@ def post_videos():
 #             return upload, 400
 #         url = upload["url"]
 
-#         video = Video.query.get(id)
+        video = Video.query.get(id)
 
-#         if not video:
-#             return {"errors": "video doesn't exist"}
+        if not video:
+            return {"errors": "video doesn't exist"}
 
-#         elif video.artist_id != current_user.id:
-#             return {"errors": "nacho video"}
+        elif video.user_id != current_user.id:
+            return {"errors": "nacho video"}
 
-#         if video.mp3_file:
-#             remove_file_from_s3(video.mp3_file)
+        # if video.mp3_file:
+        #     remove_file_from_s3(video.mp3_file)
 
-#         video.name = form.data['name']
-#         video.artist_name = form.data['artist_name']
-#         video.mp3_file = url
-#         video.genre = form.data['genre']
-#         video.preview_img = form.data['preview_img']
-#         video.artist_id = current_user.id
-#         video.updated_at = date.today()
+        video.title = form.data['title']
+        # video.mp4_file = url
+        video.mp4 = form.data['mp4']
+        video.description = form.data['description']
+        # video.preview_img = form.data['preview_img']
+        video.updated_at = date.today()
 
-#         db.session.commit()
+        db.session.commit()
 
-#         return video.to_dict()
+        return video.to_dict()
 
-#     return {"errors": form.errors}
+    return {"errors": form.errors}
 
 
 # Delete a video
-# @videos_routes.route('/<int:id>', methods=['DELETE'])
-# def delete_video(id):
-#     video = Video.query.get(id)
-#     print(video)
-#     if video.artist_id != current_user.id:
-#         return {"errors": 'nacho video'}
+@videos_routes.route('/<int:id>', methods=['DELETE'])
+def delete_video(id):
+    video = Video.query.get(id)
+    print(video)
+    if video.user_id != current_user.id:
+        return {"errors": 'nacho video'}
 
-#     if video.mp3_file:
-#         remove_file_from_s3(video.mp3_file)
+    # if video.mp4_file:
+    #     remove_file_from_s3(video.mp4_file)
 
-#     db.session.delete(video)
-#     db.session.commit()
-#     return {'success': 'good job'}
+    db.session.delete(video)
+    db.session.commit()
+    return {'success': 'good job'}

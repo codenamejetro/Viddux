@@ -49,7 +49,7 @@ export const getAllVideosThunk = () => async (dispatch) => {
 };
 
 export const getVideoThunk = (id) => async (dispatch) => {
-	// console.log("THE IDDDD ", id)
+	console.log("THE IDDDD ", id)
 	const response = await fetch(`/api/videos/${id}`)
 	// console.log("THE RESPONSE ", response)
 	if (response.ok) {
