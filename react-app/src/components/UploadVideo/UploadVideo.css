@@ -1,0 +1,36 @@
+.upload-video-container {
+    height: 30rem;
+    width: 50rem;
+    background-color: gray;
+}
+
+.upload-video-details-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-video-details-title {
+    color: white;
+}
+
+.upload-video-form {
+    display: flex;
+}
+
+.upload-video-form-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-video-form-title {
+    height: 10rem;
+    width: 20rem;
+    color: white;
+    border: 1px solid white;
+}
+
+.upload-video-form-description {
+    height: 15rem;
+    width: 20rem;
+    border: 1px solid white;
+}

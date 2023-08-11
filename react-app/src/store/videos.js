@@ -63,21 +63,21 @@ export const getVideoThunk = (id) => async (dispatch) => {
 	}
 }
 
-// export const createVideoThunk = (video) => async (dispatch) => {
-// 	// console.log("VIDEO")
-// 	const response = await fetch('/api/videos/new', {
-// 		method: 'POST',
-// 		body: video
-// 	})
+export const createVideoThunk = (video) => async (dispatch) => {
+	console.log("VIDEOOOOOOOOO")
+	const response = await fetch('/api/videos/new', {
+		method: 'POST',
+		body: video
+	})
 
-// 	if (response.ok) {
-// 		const data = await response.json();
-// 		if (data.errors) {
-// 			return data.errors
-// 		}
-// 		dispatch(createVideoAction(data))
-// 	}
-// }
+	if (response.ok) {
+		const data = await response.json();
+		if (data.errors) {
+			return data.errors
+		}
+		dispatch(createVideoAction(data))
+	}
+}
 
 // export const updateVideoThunk = (video, updatedVideo) => async (dispatch) => {
 // 	console.log("TEST 2", video)
