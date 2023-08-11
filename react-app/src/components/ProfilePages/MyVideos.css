@@ -69,7 +69,7 @@
     border-bottom: 1px solid gray;
 }
 
-.my-videos-content-bottom {
+.my-videos-content-below-title {
     display: flex;
     justify-content: space-between;
 }

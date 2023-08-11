@@ -34,5 +34,5 @@ class Playlist(db.Model):
                 "username": self.user.username,
                 "id": self.user.id
             },
-            "song": [song.to_dict() for song in self.song]
+            "videos": [videos.to_dict() for videos in self.videos]
         }

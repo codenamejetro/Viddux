@@ -23,7 +23,7 @@ const VideoBar = ({ vid }) => {
                             modalComponent={<UpdateVideo />} />
                     </div>
                     <div>
-                    <OpenModalButton
+                        <OpenModalButton
                             buttonText="Delete"
                             modalComponent={<DeleteVideo />} />
 

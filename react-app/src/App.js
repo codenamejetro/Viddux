@@ -10,6 +10,7 @@ import MyVideos from "./components/ProfilePages/MyVideos";
 import MyPlaylists from "./components/ProfilePages/MyPlaylists";
 import ProtectedRoute from './components/auth/ProtectedRoute'
 import VideoPage from "./components/VideoPage";
+import UploadVideo from "./components/UploadVideo";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <ProtectedRoute path='/profile/videos'>
             <MyVideos />
+          </ProtectedRoute>
+          <ProtectedRoute path='/profile/videos/new'>
+            <UploadVideo />
           </ProtectedRoute>
           {/* <Route exact path='/profile/videos'>
             <MyVideos />

@@ -42,7 +42,7 @@ const MyVideos = () => {
                     <h2>
                         Channel content
                     </h2>
-                    <div className='my-videos-content-bottom'>
+                    <div className='my-videos-content-below-title'>
                         <div className='my-videos-content-toggle' >
                             <div>Videos</div>
                             <div>Playlists</div>
