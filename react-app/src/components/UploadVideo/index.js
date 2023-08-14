@@ -17,7 +17,7 @@ const UploadVideo = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log('HIHHIHI')
+        // console.log('HIHHIHI IN HANDLESUBMIT')
         if (Object.keys(err).length > 0) {
             setDisplayErr(true)
         }
@@ -31,7 +31,7 @@ const UploadVideo = () => {
             // formData.append('preview_img', preview_img)
 
             dispatch(createVideoThunk(formData))
-            history.push('/profile/videos')
+            // history.push('/profile/videos')
         }
     }
 
@@ -45,7 +45,7 @@ const UploadVideo = () => {
                             className='upload-video-form-left'
                             action="/api/videos/new"
                             method="POST"
-                            // encType="multipart/form-data"
+                            encType="multipart/form-data"
                             onSubmit={handleSubmit}>
                             <div className='upload-video-form-title'>
                                 Title
@@ -96,6 +96,7 @@ const UploadVideo = () => {
 
                         <div className='upload-video-button'>
 
+                            {/* <button onClick={handleSubmit}>Upload</button> */}
                             <button type='submit'>Upload</button>
                         </div>
 

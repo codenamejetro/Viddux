@@ -64,7 +64,7 @@ export const getVideoThunk = (id) => async (dispatch) => {
 }
 
 export const createVideoThunk = (video) => async (dispatch) => {
-	console.log("VIDEOOOOOOOOO")
+	console.log("VIDEOOOOOOOOO IN CREATEVIDEOTHUNK", video)
 	const response = await fetch('/api/videos/new', {
 		method: 'POST',
 		body: video

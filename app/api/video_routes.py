@@ -44,7 +44,7 @@ def get_video(id):
 def post_videos():
     form = PostVideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # print('THIS IS PRINT POST VIDEO')
+    print('THIS IS PRINT POST VIDEO')
     if form.validate_on_submit():
         # if "mp4" not in request.files:
         #     return {"errors": "video file required"}, 400
