@@ -107,9 +107,9 @@ def update_video(id):
 @videos_routes.route('/<int:id>', methods=['DELETE'])
 def delete_video(id):
     video = Video.query.get(id)
-    print(video)
-    if video.user_id != current_user.id:
-        return {"errors": 'nacho video'}
+    print('ID IN DELETE ROUTE', id)
+    # if video.user_id != current_user.id:
+    #     return {"errors": 'nacho video'}
 
     # if video.mp4_file:
     #     remove_file_from_s3(video.mp4_file)
