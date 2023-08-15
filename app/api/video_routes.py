@@ -77,6 +77,7 @@ def post_videos():
 # Update a video
 @videos_routes.route('/<int:id>', methods=['PUT'])
 def update_video(id):
+    print('UPDATE ROUTE ', request.data)
     form = PostVideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 

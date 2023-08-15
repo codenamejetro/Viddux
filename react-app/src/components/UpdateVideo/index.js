@@ -8,8 +8,8 @@ const UpdateVideo = ({ videoId }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const video = useSelector(state => state.videos.singleVideo)
-    const [title, setTitle] = useState(video.title || '')
-    const [description, setDescription] = useState(video.description || '')
+    const [title, setTitle] = useState(video.title)
+    const [description, setDescription] = useState(video.description)
     const [err, setErr] = useState({})
     const [displayErr, setDisplayErr] = useState(false)
 
@@ -36,16 +36,24 @@ const UpdateVideo = ({ videoId }) => {
         const errors = {}
         if (!title) errors.name = "Title is required"
         if (!description) errors.description = "Description is required"
-
-        // if (!img.endsWith('.png') && !img.endsWith('.jpg') && !img.endsWith('.jpeg')) errors.img = "Image URL needs to end in jpg or png"
         setErr(errors)
     }, [title, description])
 
+    // useEffect(() => {
+    //     dispatch(getVideoThunk(videoId));
+
+    // }, [dispatch, videoId]);
+
     useEffect(() => {
-        dispatch(getVideoThunk(videoId));
-
-    }, [dispatch, videoId]);
-
+        const fetchSongDetails = async () => {
+            dispatch(getVideoThunk(videoId));
+            if (video && video !== undefined) {
+                setTitle(video.title)
+                setDescription(video.description)
+            }
+        }
+        fetchSongDetails();
+    }, [dispatch, video, videoId]);
 
     return (
         <>

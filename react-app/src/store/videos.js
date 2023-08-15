@@ -75,21 +75,18 @@ export const createVideoThunk = (video) => async (dispatch) => {
 }
 
 export const updateVideoThunk = (id, updatedVideo) => async (dispatch) => {
-	console.log('IN UPDATETHUNK ID', typeof id)
-	for (const value of updatedVideo.values()) {
-		console.log(value);
-	  }
+	// console.log('IN UPDATETHUNK ID', typeof id)
+	// for (const value of updatedVideo.values()) {
+	// 	console.log(value);
+	//   }
 	const response = await fetch(`/api/videos/${id}`, {
 		method: 'PUT',
-		headers: {
-			"Content-Type": "application/json",
-		},
-		// body: updatedVideo
-		body: JSON.stringify({
-			mp4: updatedVideo.mp4,
-			description: updatedVideo.description,
-			title: updatedVideo.title,
-		}),
+		body: updatedVideo
+		// body: JSON.stringify({
+		// 	mp4: updatedVideo.mp4,
+		// 	description: updatedVideo.description,
+		// 	title: updatedVideo.title,
+		// }),
 	})
 
 	if (response.ok) {
@@ -134,9 +131,14 @@ export default function videosReducer(state = initialState, action) {
 			newState = { ...state, singleVideo: { ...action.singleVideo } }
 			return newState
 		case UPDATE_VIDEO:
-			newState = {
-				...state, singleVideo: {...state.singleVideo,},};
-			newState[action.video.id] = action.video;
+			// newState = {
+			// 	...state, singleVideo: {...state.singleVideo,},};
+			// 	console.log('UPDATEVIDEO CASE ACTION', action)
+			// newState[action.video.id] = action.video;
+
+			newState = {allVideos: {...state.allVideos}, singleVideo: {...state.singleVideo}}
+			newState.singleVideo = action.video
+
 			return newState;
 		case DELETE_VIDEO:
 			newState = { ...state, allVideos: { ...state.allVideos } }

@@ -5,6 +5,7 @@ import { getAllVideosThunk } from '../../store/videos'
 import VideoBar from './VideoBar'
 import OpenModalButton from '../OpenModalButton'
 import UploadVideo from '../UploadVideo'
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
 
 const MyVideos = () => {
     const dispatch = useDispatch()
@@ -22,6 +23,7 @@ const MyVideos = () => {
     useEffect(() => {
         dispatch(getAllVideosThunk())
     }, [dispatch])
+
     return (
 
         <div className='my-videos-container'>
@@ -45,7 +47,7 @@ const MyVideos = () => {
                     <div className='my-videos-content-below-title'>
                         <div className='my-videos-content-toggle' >
                             <div>Videos</div>
-                            <div>Playlists</div>
+                            <NavLink to='/profile/playlists'>Playlists</NavLink>
                         </div>
                         <div className='my-videos-content-upload'>
                             <div>
