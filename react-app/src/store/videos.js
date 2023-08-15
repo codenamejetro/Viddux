@@ -35,36 +35,31 @@ const deleteVideoAction = (videoId) => ({
 
 export const getAllVideosThunk = () => async (dispatch) => {
 	const response = await fetch("/api/videos/")
-	// console.log("responseeeeeeeeeeeeeeee", response)
 	if (response.ok) {
 		const data = await response.json();
-		// console.log('DDDAAATAAALLVIDEOS', data)
 		if (data.errors) {
 			return;
 		}
-		console.log("dataaaaaaaaaaaaaaaa", data)
 
 		dispatch(getAllVideosAction(data));
 	}
 };
 
 export const getVideoThunk = (id) => async (dispatch) => {
-	console.log("THE IDDDD ", id)
+	console.log('IN GETBYID ID', typeof id)
+
 	const response = await fetch(`/api/videos/${id}`)
-	// console.log("THE RESPONSE ", response)
 	if (response.ok) {
 		const data = await response.json();
 		if (data.errors) {
 			return
 		}
-		// console.log("DATAAAA ", data)
 		dispatch(getVideoAction(data))
 		return data
 	}
 }
 
 export const createVideoThunk = (video) => async (dispatch) => {
-	console.log("VIDEOOOOOOOOO IN CREATEVIDEOTHUNK", video)
 	const response = await fetch('/api/videos/new', {
 		method: 'POST',
 		body: video
@@ -79,50 +74,48 @@ export const createVideoThunk = (video) => async (dispatch) => {
 	}
 }
 
-// export const updateVideoThunk = (video, updatedVideo) => async (dispatch) => {
-// 	console.log("TEST 2", video)
+export const updateVideoThunk = (id, updatedVideo) => async (dispatch) => {
+	console.log('IN UPDATETHUNK ID', typeof id)
+	for (const value of updatedVideo.values()) {
+		console.log(value);
+	  }
+	const response = await fetch(`/api/videos/${id}`, {
+		method: 'PUT',
+		headers: {
+			"Content-Type": "application/json",
+		},
+		// body: updatedVideo
+		body: JSON.stringify({
+			mp4: updatedVideo.mp4,
+			description: updatedVideo.description,
+			title: updatedVideo.title,
+		}),
+	})
 
-// 	const response = await fetch(`/api/videos/${video}`, {
-// 		method: 'PUT',
-// 		headers: {
-// 			"Content-Type": "application/json",
-// 		},
-// 		body: JSON.stringify({
-// 			id: updatedVideo.id,
-// 			name: updatedVideo.name,
-// 			artist_name: updatedVideo.artist_name,
-// 			artist_id: updatedVideo.artist_id,
-// 			genre: updatedVideo.genre,
-// 			preview_img: updatedVideo.preview_img
-// 		}),
-// 	})
+	if (response.ok) {
+		const data = await response.json();
 
-// 	if (response.ok) {
-// 		const data = await response.json();
+		if (data.errors) {
+			return data.errors
+		}
+		dispatch(updateVideoAction(data))
+		return data
+	}
+}
 
-// 		if (data.errors) {
-// 			// console.log("TEST 6")
-// 			return data.errors
-// 		}
-// 		// console.log("TEST 4")
-// 		dispatch(updateVideoAction(data))
-// 		return data
-// 	}
-// }
-
-// export const deleteVideoThunk = (videoId) => async (dispatch) => {
-// 	const response = await fetch(`/api/videos/${videoId}`, {
-// 		method: 'DELETE',
-// 		body: videoId
-// 	})
-// 	if (response.ok) {
-// 		const data = await response.json()
-// 		if (data.errors) {
-// 			return data.errors
-// 		}
-// 		dispatch(deleteVideoAction(data))
-// 	}
-// }
+export const deleteVideoThunk = (videoId) => async (dispatch) => {
+	const response = await fetch(`/api/videos/${videoId}`, {
+		method: 'DELETE',
+		body: videoId
+	})
+	if (response.ok) {
+		const data = await response.json()
+		if (data.errors) {
+			return data.errors
+		}
+		dispatch(deleteVideoAction(data))
+	}
+}
 
 const initialState = { allVideos: {}, singleVideo: {} }
 
@@ -130,27 +123,18 @@ export default function videosReducer(state = initialState, action) {
 	let newState;
 	switch (action.type) {
 		case GET_ALLVIDEOS:
-            // console.log("THIS IS ACTIONNN", action.videos.videos)
 			newState = { ...state, allVideos: { ...action.allVideos } }
 			action.videos.videos.forEach(video => newState.allVideos[video.id] = video)
 			return newState
 		case GET_VIDEO:
-			// console.log("ACTIONN ", action)
 			newState = { ...state, singleVideo: { ...action.video } }
-			// console.log("NEW STATEEEE ", newState)
 			return newState
 		case CREATE_VIDEO:
-			// console.log("STATEEEE", state)
-			// console.log("ACTIONNN", action)
 			newState = { ...state, singleVideo: { ...action.singleVideo } }
 			return newState
 		case UPDATE_VIDEO:
 			newState = {
-				...state,
-				singleVideo: {
-					...state.singleVideo,
-				},
-			};
+				...state, singleVideo: {...state.singleVideo,},};
 			newState[action.video.id] = action.video;
 			return newState;
 		case DELETE_VIDEO:

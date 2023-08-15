@@ -10,4 +10,4 @@ class PostVideoForm(FlaskForm):
     mp4 = StringField("mp4", validators=[DataRequired()])
     # mp4 = FileField("mp4", validators=[FileRequired(), FileAllowed(ALLOWED_VIDEO_EXTENSIONS)])
     # preview_img = FileField("preview_img", validators=[FileRequired(), FileAllowed(ALLOWED_IMAGE_EXTENSIONS)])
-    description = StringField('description', validators=[DataRequired(), Length(max=255)])
+    description = StringField('Description', validators=[DataRequired(), Length(max=255)])

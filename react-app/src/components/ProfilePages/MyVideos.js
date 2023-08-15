@@ -17,7 +17,7 @@ const MyVideos = () => {
     const allMyVids = allVidsArr.filter(vid => {
         return vid.user_id === currUser.id
     })
-    console.log("All my videos", allMyVids)
+    // console.log("All my videos", allMyVids)
 
     useEffect(() => {
         dispatch(getAllVideosThunk())

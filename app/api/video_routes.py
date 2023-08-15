@@ -32,7 +32,6 @@ def get_video(id):
     creator = User.query.get(video.user_id)
     video = video.to_dict()
     creator = creator.to_dict()
-    print('VIDEOOOOOOOOOOOOOOOOOOOOO', creator)
     video['creator'] = creator
     # print('video in videos routes', video)
 
@@ -44,7 +43,6 @@ def get_video(id):
 def post_videos():
     form = PostVideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('THIS IS PRINT POST VIDEO')
     if form.validate_on_submit():
         # if "mp4" not in request.files:
         #     return {"errors": "video file required"}, 400
@@ -77,45 +75,26 @@ def post_videos():
 
 
 # Update a video
-@videos_routes.route('/<int:id>', methods=["PUT"])
+@videos_routes.route('/<int:id>', methods=['PUT'])
 def update_video(id):
     form = PostVideoForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-#         if "mp3_file" not in request.files:
-#             return {"errors": "video file required"}, 400
-#         image = request.files["mp3_file"]
-#         print(image)
-#         image.filename = get_unique_filename(image.filename)
-#         upload = upload_file_to_s3(image)
-#         # print(request.files['name'])
-#         if "url" not in upload:
-#             print(upload['errors'])
-#         # if the dictionary doesn't have a url key
-#         # it means that there was an error when we tried to upload
-#         # so we send back that error message
-#             # return render_template("post_form.html", form=form, errors=[upload])
-#             return upload, 400
-#         url = upload["url"]
 
         video = Video.query.get(id)
-
         if not video:
             return {"errors": "video doesn't exist"}
 
         elif video.user_id != current_user.id:
             return {"errors": "nacho video"}
 
-        # if video.mp3_file:
-        #     remove_file_from_s3(video.mp3_file)
-
         video.title = form.data['title']
-        # video.mp4_file = url
         video.mp4 = form.data['mp4']
         video.description = form.data['description']
         # video.preview_img = form.data['preview_img']
         video.updated_at = date.today()
+        print('videoooooooooo', video)
 
         db.session.commit()
 
