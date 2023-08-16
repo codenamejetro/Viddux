@@ -141,8 +141,9 @@ export default function videosReducer(state = initialState, action) {
 
 			return newState;
 		case DELETE_VIDEO:
-			newState = { ...state, allVideos: { ...state.allVideos } }
+			newState = {allVideos: { ...state.allVideos }, singleVideo: {...state.singleVideo} }
 			delete newState.allVideos[action.videoId]
+
 			return newState
 
 		default:

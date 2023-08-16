@@ -162,29 +162,18 @@ export default function playlistsReducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALLPLAYLISTS:
             console.log('action in GETALLPLAYLISTS', action)
-            newState = { allPlaylists: { ...action.allPlaylists }, singlePlaylist: {...state.singlePlaylist} }
+            newState = { allPlaylists: { ...action.allPlaylists }, singlePlaylist: { ...state.singlePlaylist } }
             action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
             return newState
 
+        case ADD_SONG_TO_PLAYLIST:
+                newState = { ...state }
+                newState.singlePlaylist = { ...action.playlist }
+                return newState
+
         case GET_PLAYLIST:
             newState = { ...state, singlePlaylist: { ...action.playlist } }
-
             return newState
-
-        case ADD_SONG_TO_PLAYLIST:
-            newState = { ...state }
-            newState.singlePlaylist = { ...action.playlist }
-            return newState
-        case UPDATE_PLAYLIST: {
-            newState = {
-                ...state,
-                singlePlaylist: {
-                    ...state.singlePlaylist,
-                },
-            };
-            newState[action.playlist.id] = action.playlist;
-            return newState;
-        }
 
         case CREATE_PLAYLIST:
             newState = { ...state }
@@ -192,9 +181,15 @@ export default function playlistsReducer(state = initialState, action) {
             newState.allPlaylists[action.playlistId.id] = action.playlistId  // Add the new playlist to allPlaylists
             return newState
 
+        case UPDATE_PLAYLIST: {
+            newState = {allPlaylists: {...state.allPlaylists}, singlePlaylist: {...state.singlePlaylist}}
+			newState.singlePlaylist = action.playlist
+
+			return newState;
+        }
 
         case DELETE_PLAYLIST:
-            newState = {allPlaylists: { ...state.allPlaylists }, singlePlaylist: {...state.singlePlaylist} }
+            newState = { allPlaylists: { ...state.allPlaylists }, singlePlaylist: { ...state.singlePlaylist } }
             delete newState.allPlaylists[action.playlistId]
             return newState
         default:

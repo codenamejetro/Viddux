@@ -10,7 +10,8 @@ const VideoBar = ({ vid }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const handleDelete = () => {
+    const handleDelete = (e) => {
+        // e.preventDefault()
         dispatch(deleteVideoThunk(vid.id))
         // history.push('/profile/videos')
         // window.location.reload()

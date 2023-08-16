@@ -7,7 +7,7 @@ import { deletePlaylistThunk } from '../../store/playlists'
 const PlaylistBar = ({ playlist }) => {
     const dispatch = useDispatch()
 
-    console.log(playlist)
+    console.log('fg ewf4ljf4f 4lf mkl4f', playlist)
     const handleDelete = (e) => {
         e.preventDefault()
         dispatch(deletePlaylistThunk(playlist.id))

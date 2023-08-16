@@ -12,11 +12,9 @@ import CreatePlaylist from '../CreatePlaylist'
 const MyPlaylists = () => {
     const dispatch = useDispatch()
     const currUser = useSelector(state => state.session.user)
-    const allPlaylists = useSelector(state => state.playlists.allPlaylists)
+    const allMyPlaylists = useSelector(state => state.playlists.allPlaylists)
     // console.log(allPlaylists)
-    const allPlaylistsArr = Object.values(allPlaylists)
-
-    const allMyPlaylists = Object.values(allPlaylistsArr)
+    const allMyPlaylistsArr = Object.values(allMyPlaylists)
 
     useEffect(() => {
         dispatch(getUserPlaylistsThunk())
@@ -60,7 +58,7 @@ const MyPlaylists = () => {
                 </div>
 
                 <div className='my-videos-content-bottom'>
-                    {allMyPlaylists.map((playlist) => {
+                    {allMyPlaylistsArr.map((playlist) => {
                         return <PlaylistBar playlist={playlist} />
                     })}
                 </div>
