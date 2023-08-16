@@ -42,12 +42,14 @@ const MyVideos = () => {
             <div className='my-videos-content'>
                 <div className='my-videos-content-top'>
                     <h2>
-                        Channel content
+                        {/* <p> */}
+                            Channel content
+                            {/* </p> */}
                     </h2>
                     <div className='my-videos-content-below-title'>
                         <div className='my-videos-content-toggle' >
-                            <div>Videos</div>
-                            <NavLink to='/profile/playlists'>Playlists</NavLink>
+                            <div className='my-content-all my-content-toggled'>Videos</div>
+                            <NavLink className='my-content-all my-content-untoggled' to='/profile/playlists'>Playlists</NavLink>
                         </div>
                         <div className='my-videos-content-upload'>
                             <div>

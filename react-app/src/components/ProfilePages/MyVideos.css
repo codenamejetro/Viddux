@@ -60,13 +60,13 @@
     margin-left: 15.1rem;
     height: 100%;
     width: 100%;
-    border: 1px solid blue;
+    border: 1px solid rgb(94, 94, 94);
 }
 
 .my-videos-content-top {
     padding: 0 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid gray;
+    padding-bottom: .1rem;
+    /* border-bottom: 1px solid rgb(94, 94, 94); */
 }
 
 .my-videos-content-below-title {
@@ -74,14 +74,28 @@
     justify-content: space-between;
 }
 
+.my-content-all {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
 .my-videos-content-toggle {
     display: flex;
     justify-content: space-between;
-    width: 10%;
+    width: 14%;
     /* border: 1px solid purple; */
+}
+
+.my-content-toggled {
+    color: darkorchid;
+    border-bottom: 1px solid darkorchid;
+    border-radius: .5rem;
+    width: 46%;
+    padding-bottom: 1rem;
 }
 
 .my-videos-content-bottom {
     min-height: 86%;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }

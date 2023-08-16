@@ -1,6 +1,7 @@
 body {
     min-height: 44rem;
-    border: 1px solid yellow;
-    /* background-color: #0f0f0f; */
+    /* border: 1px solid yellow; */
+    background-color: #0f0f0f;
+    color: #4c1892;
 
 }

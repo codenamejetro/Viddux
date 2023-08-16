@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './Navigation.css'
 import { useEffect, useRef, useState } from 'react';
 import { getAllPlaylistsThunk, getUserPlaylistsThunk } from '../../store/playlists';
-import PlaylistBar from '../ProfilePages/PlaylistBar'
+import PlaylistTab from './PlaylistTab';
 
 
 const SideMenu = ({ user }) => {
@@ -45,29 +45,31 @@ const SideMenu = ({ user }) => {
             <button className='side-menu-button' onClick={openMenu}>
                 <i className="fa-solid fa-bars fa-lg"></i>
             </button>
-            <ul className={ulClassName} ref={ulRef}>
+            <div className={ulClassName} ref={ulRef}>
                 {user ? (
                     <>
-                        <div>
+                        <div className='side-menu-dropdown-wrapper'>
 
-                            <div>
-                                <div>
+                            <div className='side-menu-tab-divider'>
+                                <div className='side-menu-tabs'>
                                     Home
                                 </div>
-                                <div>
+                                <div className='side-menu-tabs'>
                                     Subscriptions
                                 </div>
                             </div>
 
-                            <div>
-                                <div>
+
+
+                            <div className='side-menu-tab-divider'>
+                                <div className='side-menu-tabs'>
                                     Your videos
                                 </div>
-                                <div>
+                                <div className='side-menu-tabs'>
                                     Liked videos
                                 </div>
                                 {myPlaylistsArr.map((playlist) => {
-                                    return <PlaylistBar playlist={playlist} />
+                                    return <PlaylistTab playlist={playlist} />
                                 })}
                             </div>
 
@@ -79,7 +81,7 @@ const SideMenu = ({ user }) => {
                     </>
                 )}
 
-            </ul>
+            </div>
         </>
     )
 }
