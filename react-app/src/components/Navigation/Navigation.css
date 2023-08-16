@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 1;
   width: fit-content;
-  top: .9rem;
+  /* top: .rem; */
   height: 40rem;
   /* border: 1px solid purple; */
 
@@ -13,31 +13,50 @@
   border: none;
   display: flex;
   align-items: center;
-  margin: 0 1rem;
+  margin: .4rem 1rem;
+
+}
+
+.side-menu-dropdown {
+  position: absolute;
+  top: 2.3rem;
+  /* border: 1px solid blue; */
+  width: 11rem;
+  left: -.6rem;
+  height: 121%;
+  /* padding-left: ; */
+  border-right: 1px solid rgb(94, 94, 94);
+  background-color: #0f0f0f;
 }
 
 .side-menu-dropdown-wrapper {
-  /* border: 1px solid red; */
+
+  padding-top: 2rem;
+  /* padding-left: 1.5rem; */
+
+  /* border: 1px solid purple; */
+}
+
+/* .side-menu-dropdown-wrapper {
+  position: absolute;
   padding: 1rem;
   width: 80%;
   height: 100%;
+  border: 1px solid blue;
+  right: .7rem;
 }
 
 .side-menu-dropdown {
   height: 102%;
-  /* width: 10rem; */
   display: flex;
-  /* justify-content: start; */
   position: absolute;
   top: 1.86rem;
-  right: 1px;
   min-height: 2rem;
-  border: 1px solid purple;
-  /* width: 152px; */
   width: 11rem;
   background-color: #0f0f0f;
+  border: 1px solid purple;
   border-right: 1px solid rgb(94, 94, 94);
-}
+} */
 
 .side-menu-tab-divider {
   display: flex;
@@ -45,23 +64,30 @@
   align-items: center;
   border-bottom: 1px solid rgb(94, 94, 94);
   /* background-color: purple; */
-  width: 113%;
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
+  width: 100%;
+  padding-bottom: 2.3em;
+  margin-bottom: 2.3rem;
 }
 
 .side-menu-tabs {
   display: flex;
   align-items: center;
+  justify-content: start;
   font-size: 1.2rem;
-  width: 110%;
+  width: 70%;
   height: 2.2rem;
-  padding-left: .8rem;
+  /* padding-left: 3rem; */
+
+  /* padding-left: .8rem; */
   /* border: 1px solid red; */
   border-radius: 1rem;
   /* color: darkorchid; */
   color: #4c1892;
 
+}
+
+.side-menu-tabs:hover {
+  background-color: rgb(94, 94, 94);
 }
 
 .navbar {
@@ -76,7 +102,7 @@
   width: 100%;
   padding: 5px 0;
   background-color: #0f0f0f;
-  /* border-bottom: 1px solid rgb(94, 94, 94); */
+  border-bottom: 1px solid rgb(94, 94, 94);
   /* box-shadow: 1px 1px 1px rgb(94, 94, 94); */
 }
 
@@ -89,6 +115,7 @@
 .navbar-left {
   display: flex;
   /* margin-right: 5rem; */
+
 }
 
 .navbar-play {

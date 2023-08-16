@@ -194,7 +194,7 @@ export default function playlistsReducer(state = initialState, action) {
 
 
         case DELETE_PLAYLIST:
-            newState = { ...state, allPlaylists: { ...state.allPlaylists } }
+            newState = {allPlaylists: { ...state.allPlaylists }, singlePlaylist: {...state.singlePlaylist} }
             delete newState.allPlaylists[action.playlistId]
             return newState
         default:

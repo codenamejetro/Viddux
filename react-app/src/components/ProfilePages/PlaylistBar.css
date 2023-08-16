@@ -1,0 +1,38 @@
+.playlist-bar-outercontainer {
+    /* padding: 1rem; */
+    border-top: 1px solid rgb(94, 94, 94);
+    border-bottom: 1px solid rgb(94, 94, 94);
+    margin-bottom: .1px;
+}
+
+.playlist-bar-container {
+    display: flex;
+    padding: 1rem 2rem;
+    height: 4rem;
+}
+
+.playlist-bar-keys-container {
+    align-items: center;
+    justify-content: space-between;
+    height: 1rem;
+    border-top: 1px solid rgb(94, 94, 94);
+    border-bottom: 1px solid rgb(94, 94, 94);
+    margin-bottom: .1px;
+}
+
+.playlist-bar-keys-left {
+
+}
+
+.playlist-bar-keys-right {
+    display: flex;
+    justify-content: space-around;
+    width: 30rem;
+}
+
+
+.playlist-bar-playlist {
+    height: 5rem;
+    width: 8rem;
+    /* border: 1px solid red; */
+}

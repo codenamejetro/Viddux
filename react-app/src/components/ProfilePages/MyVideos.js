@@ -47,7 +47,7 @@ const MyVideos = () => {
                             {/* </p> */}
                     </h2>
                     <div className='my-videos-content-below-title'>
-                        <div className='my-videos-content-toggle' >
+                        <div className='my-content-toggle' >
                             <div className='my-content-all my-content-toggled'>Videos</div>
                             <NavLink className='my-content-all my-content-untoggled' to='/profile/playlists'>Playlists</NavLink>
                         </div>
