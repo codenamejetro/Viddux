@@ -3,16 +3,20 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import SideMenu from './SideMenu';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
 		<>
+			<div className='side-menu-wrapper'>
+				<SideMenu user={sessionUser} />
+			</div>
 			<div className='navbar'>
 				<div className='navbar-left'>
 					<div className='navbar-modal-menu'>
-						<i className="fa-solid fa-bars fa-lg"></i>
+						{/* <SideMenu user={sessionUser} /> */}
 					</div>
 					<NavLink
 						className='navbar-site-name'

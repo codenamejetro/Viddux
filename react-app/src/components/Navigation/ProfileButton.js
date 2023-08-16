@@ -46,9 +46,6 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <div>
-
-            </div>
             <div className="profile-dropdown-inner">
               <NavLink className="profile-dropdown-inner-li" to='/profile'>
                 <i className="fa-solid fa-image-portrait"></i>

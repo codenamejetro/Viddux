@@ -1,3 +1,27 @@
+.side-menu-wrapper {
+  /* border: 1px solid purple; */
+  z-index: 1;
+  position: relative;
+  width: fit-content;
+}
+
+.side-menu-button {
+  border: none;
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.side-menu-dropdown {
+  height: 20rem;
+  width: 10rem;
+  position: absolute;
+  top: 10rem;
+  right: 2.5rem;
+  min-height: 2rem;
+  border: 20px solid purple;
+}
+
 .navbar {
   display: flex;
   position: fixed;

@@ -31,7 +31,7 @@ def get_playlist(id):
 @login_required
 def get_current_user_playlists():
     playlists = Playlist.query.filter_by(user_id=current_user.id).all()
-    print('user', playlists)
+    # print('user', playlists)
     return {"playlists": [playlist.to_dict() for playlist in playlists]}
 
 

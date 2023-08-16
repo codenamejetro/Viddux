@@ -1,6 +1,7 @@
 // constants
 const GET_ALLPLAYLISTS = "playlists/GET_ALLPLAYLISTS";
 const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
+// const GET_USERPLAYLISTS = 'playlists/GET_USERPLAYLISTS'
 const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
 const CREATE_PLAYLIST = 'playlists/CREATE_PLAYLIST'
 const DELETE_PLAYLIST = 'playlists/DELETE_PLAYLIST'
@@ -13,6 +14,11 @@ const getAllPlaylistsAction = (playlists) => ({
     type: GET_ALLPLAYLISTS,
     playlists
 });
+
+// const getUserPlaylistAction = (playlists) => ({
+//     type: GET_USERPLAYLISTS,
+//     playlists
+// })
 
 const getPlaylistAction = (playlist) => ({
     type: GET_PLAYLIST,
@@ -44,8 +50,8 @@ const updatePlaylistAction = (playlist) => ({
 
 
 export const getAllPlaylistsThunk = () => async (dispatch) => {
-    const response = await fetch("/api/playlists/")
-    console.log("IN getAllPlaylistsThunk", response)
+    const response = await fetch("/api/playlists")
+    // console.log("IN getAllPlaylistsThunk", response)
     if (response.ok) {
         const data = await response.json();
         console.log("data", data)
@@ -56,6 +62,17 @@ export const getAllPlaylistsThunk = () => async (dispatch) => {
         dispatch(getAllPlaylistsAction(data));
     }
 };
+
+export const getUserPlaylistsThunk = (id) => async (dispatch) => {
+    const response = await fetch('/api/playlists/current')
+    if (response.ok) {
+        const data = await response.json()
+        if (data.errors) {
+            return
+        }
+        dispatch(getAllPlaylistsAction(data))
+    }
+}
 
 export const getPlaylistThunk = (id) => async (dispatch) => {
     // console.log("THE IDDDD ", id)
@@ -144,10 +161,11 @@ export default function playlistsReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_ALLPLAYLISTS:
-            newState = { ...state, allPlaylists: { ...action.allPlaylists } }
+            console.log('action in GETALLPLAYLISTS', action)
+            newState = { allPlaylists: { ...action.allPlaylists }, singlePlaylist: {...state.singlePlaylist} }
             action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
-
             return newState
+
         case GET_PLAYLIST:
             newState = { ...state, singlePlaylist: { ...action.playlist } }
 
