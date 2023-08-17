@@ -5,13 +5,13 @@
     height: fit-content;
 }
 
-.home-single-video {
+.home-single-video-video {
     /* border: 1px solid darkorchid; */
     border: 1px solid #4c1892;
     border-radius: 1rem;
 }
 
-.home-single-video:hover {
+.home-single-video-video:hover {
     border-radius: 0;
 }
 

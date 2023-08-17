@@ -2,7 +2,7 @@
 const GET_ALLPLAYLISTS = "playlists/GET_ALLPLAYLISTS";
 const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 // const GET_USERPLAYLISTS = 'playlists/GET_USERPLAYLISTS'
-const ADD_SONG_TO_PLAYLIST = "playlists/ADD_SONG_TO_PLAYLIST";
+const ADD_VIDEO_TO_PLAYLIST = "playlists/ADD_VIDEO_TO_PLAYLIST";
 const CREATE_PLAYLIST = 'playlists/CREATE_PLAYLIST'
 const DELETE_PLAYLIST = 'playlists/DELETE_PLAYLIST'
 const UPDATE_PLAYLIST = 'playlists/UPDATE_PLAYLIST'
@@ -27,8 +27,8 @@ const getPlaylistAction = (playlist) => ({
 
 // addedd??
 
-const addSongToPlaylistAction = (playlist) => ({
-    type: ADD_SONG_TO_PLAYLIST,
+const addVideoToPlaylistAction = (playlist) => ({
+    type: ADD_VIDEO_TO_PLAYLIST,
     playlist
 })
 
@@ -105,8 +105,8 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
     }
 }
 
-export const addSongToPlaylistThunk = (playlistId, songId) => async (dispatch) => {
-    const response = await fetch(`/api/playlists/${playlistId}/songs/${songId}`, {
+export const addVideoToPlaylistThunk = (playlistId, videoId) => async (dispatch) => {
+    const response = await fetch(`/api/playlists/${playlistId}/songs/${videoId}`, {
         method: "POST",
     });
 
@@ -116,7 +116,7 @@ export const addSongToPlaylistThunk = (playlistId, songId) => async (dispatch) =
             return
         }
 
-        dispatch(addSongToPlaylistAction(updatedPlaylist));
+        dispatch(addVideoToPlaylistAction(updatedPlaylist));
     }
 };
 
@@ -166,7 +166,7 @@ export default function playlistsReducer(state = initialState, action) {
             action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
             return newState
 
-        case ADD_SONG_TO_PLAYLIST:
+        case ADD_VIDEO_TO_PLAYLIST:
                 newState = { ...state }
                 newState.singlePlaylist = { ...action.playlist }
                 return newState

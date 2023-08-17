@@ -5,3 +5,9 @@ body {
     color: #4c1892;
 
 }
+
+button {
+    border: none;
+    color: rgb(94, 94, 94);
+    background-color: #4c1892;
+}
