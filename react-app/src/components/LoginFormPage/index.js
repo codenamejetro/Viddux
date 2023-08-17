@@ -23,7 +23,7 @@ function LoginFormPage() {
   };
 
   const demoHandler = () => {
-    console.log('hi')
+    // console.log('hi')
     dispatch(login('demo@aa.io', 'password'))
   }
 

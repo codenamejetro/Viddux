@@ -3,18 +3,19 @@ import OpenModalButton from '../OpenModalButton'
 import UpdatePlaylist from '../UpdatePlaylist'
 import './PlaylistBar.css'
 import { deletePlaylistThunk } from '../../store/playlists'
+import { formatDate } from '../../HelperFuncs/formatDate'
 
 const PlaylistBar = ({ playlist }) => {
     const dispatch = useDispatch()
 
     console.log('fg ewf4ljf4f 4lf mkl4f', playlist)
     const handleDelete = (e) => {
-        e.preventDefault()
+        // e.preventDefault()
         dispatch(deletePlaylistThunk(playlist.id))
     }
     return (
         <div className='playlist-bar-outercontainer'>
-            <div className='playlist-bar-container playlist-bar-keys-container'>
+            {/* <div className='playlist-bar-container playlist-bar-keys-container'>
                 <div className='playlist-bar-keys-left'>
                     Playlists
                 </div>
@@ -22,33 +23,53 @@ const PlaylistBar = ({ playlist }) => {
                     <div>Visibility</div>
                     <div>Last updated</div>
                     <div>Video Count</div>
-                    {/* <div></div> */}
+                    <div></div>
                 </div>
-            </div>
+            </div> */}
             <div className="playlist-bar-container">
-                <div className="playlist-bar-vid">
-                    {/* <playlist src={playlist.mp4} > </playlist> */}
-                </div>
-                <div className="playlist-bar-title">
-                    {playlist.name}
-                </div>
-                <div className="playlist-bar-date">
-                    {playlist.updated_at}
-                </div>
-                <div className='playlist-bar-functions'>
-                    <div>
-                        <OpenModalButton
-                            buttonText="Edit"
-                            modalComponent={<UpdatePlaylist playlistId={playlist.id} />} />
+
+                <div className='playlist-bar-left'>
+                    <div className="playlist-bar-playlist">
+                        {/* <playlist src={playlist.mp4} > </playlist> */}
                     </div>
-                    <form>
+                    <div className='playlist-bar-title-description'>
+                        <div className="playlist-bar-title">
+                            {playlist.name}
+                        </div>
+                        <div className='playlist-bar-description'>
+                            {playlist.description}
+                        </div>
+                    </div>
+                </div>
 
-                        <button className='playlist-bar-delete' onClick={handleDelete} type='submit'>
-                            Delete
-                        </button>
+                <div className='playlist-bar-right'>
 
-                    </form>
 
+                    <div className='playlist-bar-visibility-date-count'>
+                        {playlist.public === true ? <div className='playlist-bar-visibility'>Public</div> : <div className='playlist-bar-visibility'>Private</div>}
+                        <div className="playlist-bar-date">
+                            {formatDate(playlist.updated_at)}
+                        </div>
+                        <div className='playlist-bar-count'>
+                            {playlist.videos.length}
+                        </div>
+
+                    </div>
+
+                    <div className='playlist-bar-functions'>
+                        <div>
+                            <OpenModalButton
+                                buttonText="Edit"
+                                modalComponent={<UpdatePlaylist playlistId={playlist.id} />} />
+                        </div>
+                        <form>
+                            <button className='playlist-bar-delete' onClick={handleDelete} type='submit'>
+                                Delete
+                            </button>
+
+                        </form>
+
+                    </div>
                 </div>
 
             </div>

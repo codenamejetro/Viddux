@@ -23,7 +23,7 @@ def seed_videos():
     video1 = Video(user_id=2, title='How to cake', mp4='howtocake.mp4', description='teaches you how to cake', created_at=date.today(), updated_at = date.today())
     video2 = Video(user_id=2, title='How to cake pt2', mp4='howtocakept2.mp4', description='teaches you how to cake pt2', created_at=date.today(), updated_at = date.today())
     video3 = Video(user_id=3, title='How to dance', mp4='howtodance.mp4', description='teaches you how to dance', created_at=date.today(), updated_at = date.today())
-    video4 = Video(user_id=4, title='Myth\'s Bad Ending Part 1', mp4='https://www.youtube.com/embed/euPfAilSpuU&t', description='HoloMyth fan animation', created_at=date.today(), updated_at = date.today())
+    video4 = Video(user_id=4, title='Myth\'s Bad Ending Part 1', mp4='https://www.youtube.com/watch?=euPfAilSpuU&t', description='HoloMyth fan animation', created_at=date.today(), updated_at = date.today())
     video5 = Video(user_id=4, title='Myth\'s Bad Ending Part 2', mp4='https://www.youtube.com/embed/euPfAilSpuU&t', description='HoloMyth fan animation', created_at=date.today(), updated_at = date.today())
     video6 = Video(user_id=5, title='Light and Shadow Production', mp4='Light_and_shadow_prod.mp4', description='Behind the scenes of Riot\'s Light and Shadow', created_at=date.today(), updated_at = date.today())
 

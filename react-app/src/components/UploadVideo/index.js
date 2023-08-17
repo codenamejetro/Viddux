@@ -22,7 +22,7 @@ const UploadVideo = () => {
         if (!title) errors.name = "Name is required"
         if (!description) errors.description = "Description is required"
         if (!mp4) errors.mp4 = "Video should be uploaded"
-        if (mp4 && !mp4.endsWith('.mp4')) errors.mp4 = "Unsupported file. Upload a '.mp4', '.', '.', or '.' file"
+        // if (mp4 && !mp4.endsWith('.mp4')) errors.mp4 = "Unsupported file. Upload a '.mp4', '.', '.', or '.' file"
 
         // if (mp4 && !mp4.name.endsWith('.mp4')) errors.mp4 = "Unsupported file. Upload a '.mp4', '.', '.', or '.' file"
         // && !mp4.name.endsWith('.') && !mp4.name.endsWith('.'))

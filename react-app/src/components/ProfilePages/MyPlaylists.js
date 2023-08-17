@@ -58,6 +58,17 @@ const MyPlaylists = () => {
                 </div>
 
                 <div className='my-videos-content-bottom'>
+                    <div className='playlist-bar-container playlist-bar-keys-container'>
+                        <div className='playlist-bar-keys-left'>
+                            Playlists
+                        </div>
+                        <div className='playlist-bar-keys-right'>
+                            <div>Visibility</div>
+                            <div>Last updated</div>
+                            <div>Video Count</div>
+                            {/* <div></div> */}
+                        </div>
+                    </div>
                     {allMyPlaylistsArr.map((playlist) => {
                         return <PlaylistBar playlist={playlist} />
                     })}

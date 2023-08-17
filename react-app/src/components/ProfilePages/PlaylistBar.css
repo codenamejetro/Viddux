@@ -30,9 +30,42 @@
     width: 30rem;
 }
 
+.playlist-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.playlist-bar-left {
+    display: flex;
+}
 
 .playlist-bar-playlist {
     height: 5rem;
     width: 8rem;
-    /* border: 1px solid red; */
+    margin-right: 1rem;
+    border: 1px solid red;
+}
+
+.playlist-bar-title-description {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.playlist-bar-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.playlist-bar-right {
+    display: flex;
+    /* justify-content: space-around;
+    width: 30rem; */
+}
+
+.playlist-bar-visibility-date-count {
+    display: flex;
+    justify-content: space-around;
+    width: 30rem;
 }

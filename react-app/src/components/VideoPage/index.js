@@ -11,7 +11,6 @@ const VideoPage = () => {
     const dispatch = useDispatch()
     const vid = useSelector(state => state.videos.singleVideo)
     const vidCreator = useSelector(state => state.videos.singleVideo.creator)
-    console.log('The video', vidCreator)
 
     useEffect(() => {
         dispatch(getVideoThunk(videoId))
@@ -25,7 +24,9 @@ const VideoPage = () => {
 
                 <div className='video-page-innerwrapper'>
                     <div className='video-page-video'>
-                        {/* <video src={vid.mp4}></video> */}
+                        {/* <video controls>
+                            <source src={vid.mp4}></source>
+                        </video> */}
                         <iframe height="450rem" width="900rem" src={vid.mp4}></iframe>
                     </div>
                     <div className='video-page-details'>
@@ -51,7 +52,7 @@ const VideoPage = () => {
                                 <div className='video-page-addtoplaylist'>
                                     <OpenModalButton
                                         buttonText="Add to playlist"
-                                        modalComponent={<AddVideoToPlaylist videoId={vid.id}/>} />
+                                        modalComponent={<AddVideoToPlaylist videoId={vid.id} />} />
                                 </div>
                             </div>
                         </div>
