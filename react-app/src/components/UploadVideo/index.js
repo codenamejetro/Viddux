@@ -33,8 +33,7 @@ const UploadVideo = () => {
 
 
     const handleSubmit = async (e) => {
-        // e.preventDefault();
-        console.log('HIHHIHI IN HANDLESUBMIT')
+        e.preventDefault();
         if (Object.keys(err).length > 0) {
             setDisplayErr(true)
             return
@@ -99,15 +98,27 @@ const UploadVideo = () => {
 
 
                         <div className='upload-video-details-right'>
+                            Enter a Youtube link
+                            <input
+                                className='upload-video-form-all-input upload-video-form-input-mp4'
+                                type='text'
+                                value={mp4}
+                                onChange={(e) => setMp4(e.target.value)}
+                                // required
+                            >
+                            </input>
+
+
+                        {/* <div className='upload-video-details-right'>
                             Upload a file
                             <input
                                 className='upload-video-form-all-input upload-video-form-input-mp4'
                                 type='text'
                                 value={mp4}
                                 onChange={(e) => setMp4(e.target.value)}
-                            // required
+                                required
                             >
-                            </input>
+                            </input> */}
 
                             {/* <input
                                 className='upload-video-form-all-input upload-video-form-input-mp4'

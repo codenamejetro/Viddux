@@ -19,7 +19,7 @@ function Navigation({ isLoaded }) {
 						{/* <SideMenu user={sessionUser} /> */}
 					</div>
 					<NavLink
-						className='navbar-site-name'
+						className='nav-link navbar-site-name'
 						exact to="/">
 						<i className="navbar-play fa-solid fa-play"></i>
 						Viddux
@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
 				{isLoaded && (
 					<div className='navbar-right'>
 						<div className='navbar-right-inner'>
-							<NavLink to='/profile/videos'>
+							<NavLink to='/profile/videos' className='nav-link'>
 								<i className="navbar-upload fa-solid fa-video"></i>
 							</NavLink>
 							<ProfileButton user={sessionUser} />

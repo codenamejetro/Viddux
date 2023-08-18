@@ -14,6 +14,11 @@ const SideMenu = ({ user }) => {
     const myPlaylistsArr = Object.values(myPlaylists)
 
 
+    const alert = () => {
+        window.alert("Coming soon!")
+        return
+    }
+
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
@@ -42,9 +47,12 @@ const SideMenu = ({ user }) => {
 
     return (
         <>
-            <button className='side-menu-button' onClick={openMenu}>
+            <button className='side-menu-button' onClick={alert}>
                 <i className="fa-solid fa-bars fa-lg"></i>
             </button>
+            {/* <button className='side-menu-button' onClick={openMenu}>
+                <i className="fa-solid fa-bars fa-lg"></i>
+            </button> */}
             <div className={ulClassName} ref={ulRef}>
                 {user ? (
                     <>

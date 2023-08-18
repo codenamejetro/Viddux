@@ -59,7 +59,7 @@ function LoginFormPage() {
                 <button type="submit">Sign in</button>
               </div>
               <div className="login-bottom-bottom">
-                <NavLink className='login-signup' to='/signup'>
+                <NavLink className='nav-link login-signup' to='/signup'>
                   Don't have an account?
                 </NavLink>
                 <div onClick={demoHandler}>Demo</div>

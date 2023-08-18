@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <div className="profile-dropdown-inner">
-              <NavLink className="profile-dropdown-inner-li" to='/profile'>
+              <NavLink className="nav-link profile-dropdown-inner-li" to='/profile'>
                 <i className="fa-solid fa-image-portrait"></i>
                 <div>&nbsp;Your channel</div>
               </NavLink>
@@ -64,11 +64,11 @@ function ProfileButton({ user }) {
         ) : (
           <>
             <div className="profile-dropdown-inner">
-              <NavLink className='profile-dropdown-inner-li' to='/login'>
+              <NavLink className='nav-link profile-dropdown-inner-li' to='/login'>
                 <i className="fa-solid fa-right-to-bracket"></i>
                 <div>Log in</div>
               </NavLink>
-              <NavLink className='profile-dropdown-inner-li' to='/signup'>
+              <NavLink className='nav-link profile-dropdown-inner-li' to='/signup'>
                 <i className="fa-solid fa-user"></i>
                 <div>Sign up</div>
               </NavLink>

@@ -13,21 +13,38 @@
 
 .playlist-bar-keys-container {
     align-items: center;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     height: 1rem;
     border-top: 1px solid rgb(94, 94, 94);
-    border-bottom: 1px solid rgb(94, 94, 94);
-    margin-bottom: .1px;
+    /* border-bottom: 1px solid rgb(94, 94, 94); */
+    /* margin-bottom: .1px; */
 }
 
 .playlist-bar-keys-left {
-
+    /* width: 20rem; */
 }
 
 .playlist-bar-keys-right {
     display: flex;
+    /* justify-content: space-around;
+    width: 30rem; */
+}
+
+.playlist-bar-keys-3 {
+    display: flex;
     justify-content: space-around;
     width: 30rem;
+}
+
+.playlist-bar-allkeys {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+}
+
+.playlist-bar-keys-right-space {
+    width: 6rem;
 }
 
 .playlist-bar-container {
@@ -68,4 +85,27 @@
     display: flex;
     justify-content: space-around;
     width: 30rem;
+}
+
+.playlist-bar-functions {
+    /* padding: 1rem 0; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    width: 6rem;
+}
+
+.playlist-bar-edit{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+
+.playlist-bar-delete-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 1rem; */
 }

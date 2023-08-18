@@ -1,7 +1,7 @@
 .upload-video-container {
     height: 30rem;
     width: 50rem;
-    background-color: gray;
+    background-color: rgb(186, 168, 168);
 }
 
 .upload-video-details-container {
@@ -10,7 +10,7 @@
 }
 
 .upload-video-details-title {
-    color: white;
+    /* color: white; */
 }
 
 .upload-video-form {
@@ -25,7 +25,7 @@
 .upload-video-form-title {
     height: 10rem;
     width: 20rem;
-    color: white;
+    /* color: white; */
     border: 1px solid white;
 }
 
@@ -33,4 +33,10 @@
     height: 15rem;
     width: 20rem;
     border: 1px solid white;
+}
+
+.upload-video-button > button {
+    color: #4c1892;
+    border: 1px solid #4c1892;
+    background-color: rgb(186, 168, 168)
 }

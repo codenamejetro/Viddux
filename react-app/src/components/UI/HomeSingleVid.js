@@ -4,7 +4,7 @@ import './HomeSingleVid.css'
 const HomeSingleVid = ({ vid }) => {
     console.log(vid.mp4)
     return (
-        <NavLink className='home-single-video-wrapper' to={`/videos/${vid.id}`}>
+        <NavLink className='nav-link home-single-video-wrapper' to={`/videos/${vid.id}`}>
             {/* <video className='home-single-video-video' src={vid.mp4}></video> */}
             <iframe className='home-single-video-video' src={vid.mp4}></iframe>
             <div className='home-single-video-bottom'>

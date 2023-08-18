@@ -134,7 +134,7 @@ function SignupFormPage() {
               </div>
 
               <div className='signup-form-bottom'>
-                <NavLink className='signup-form-bottom-login' to='/login'>Already have an account?</NavLink>
+                <NavLink className='nav-link signup-form-bottom-login' to='/login'>Already have an account?</NavLink>
                 <button type="submit">Sign Up</button>
               </div>
             </form>

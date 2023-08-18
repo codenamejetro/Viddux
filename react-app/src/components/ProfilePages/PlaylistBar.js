@@ -4,6 +4,7 @@ import UpdatePlaylist from '../UpdatePlaylist'
 import './PlaylistBar.css'
 import { deletePlaylistThunk } from '../../store/playlists'
 import { formatDate } from '../../HelperFuncs/formatDate'
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
 
 const PlaylistBar = ({ playlist }) => {
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ const PlaylistBar = ({ playlist }) => {
             </div> */}
             <div className="playlist-bar-container">
 
-                <div className='playlist-bar-left'>
+                <NavLink to={`/playlists/${playlist.id}`} className='nav-link playlist-bar-left'>
                     <div className="playlist-bar-playlist">
                         {/* <playlist src={playlist.mp4} > </playlist> */}
                     </div>
@@ -40,29 +41,28 @@ const PlaylistBar = ({ playlist }) => {
                             {playlist.description}
                         </div>
                     </div>
-                </div>
+                </NavLink>
 
                 <div className='playlist-bar-right'>
 
 
                     <div className='playlist-bar-visibility-date-count'>
-                        {playlist.public === true ? <div className='playlist-bar-visibility'>Public</div> : <div className='playlist-bar-visibility'>Private</div>}
-                        <div className="playlist-bar-date">
+                        {playlist.public === true ? <div className='playlist-bar-allkeys playlist-bar-visibility'>Public</div> : <div className='playlist-bar-visibility'>Private</div>}
+                        <div className="playlist-bar-allkeys playlist-bar-date">
                             {formatDate(playlist.updated_at)}
                         </div>
-                        <div className='playlist-bar-count'>
+                        <div className='playlist-bar-allkeys playlist-bar-count'>
                             {playlist.videos.length}
                         </div>
 
                     </div>
-
                     <div className='playlist-bar-functions'>
-                        <div>
+                        <div className='playlist-bar-edit'>
                             <OpenModalButton
                                 buttonText="Edit"
                                 modalComponent={<UpdatePlaylist playlistId={playlist.id} />} />
                         </div>
-                        <form>
+                        <form className='playlist-bar-delete-form'>
                             <button className='playlist-bar-delete' onClick={handleDelete} type='submit'>
                                 Delete
                             </button>
@@ -70,9 +70,11 @@ const PlaylistBar = ({ playlist }) => {
                         </form>
 
                     </div>
-                </div>
 
+                </div>
             </div>
+
+
         </div>
     )
 }

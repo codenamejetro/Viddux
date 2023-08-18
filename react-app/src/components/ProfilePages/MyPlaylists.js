@@ -44,7 +44,7 @@ const MyPlaylists = () => {
                     </h2>
                     <div className='my-videos-content-below-title'>
                         <div className='my-content-toggle' >
-                            <NavLink className='my-content-all my-content-untoggled' to='/profile/videos'>Videos</NavLink>
+                            <NavLink className='nav-link my-content-all my-content-untoggled' to='/profile/videos'>Videos</NavLink>
                             <div className='my-content-all my-content-toggled' >Playlists</div>
                         </div>
                         {/* <div className='my-videos-content-upload'>
@@ -63,10 +63,14 @@ const MyPlaylists = () => {
                             Playlists
                         </div>
                         <div className='playlist-bar-keys-right'>
-                            <div>Visibility</div>
-                            <div>Last updated</div>
-                            <div>Video Count</div>
-                            {/* <div></div> */}
+                            <div className='playlist-bar-keys-3'>
+                                <div className='playlist-bar-allkeys'>Visibility</div>
+                                <div className='playlist-bar-allkeys'>Last updated</div>
+                                <div className='playlist-bar-allkeys'>Video Count</div>
+                            </div>
+                            <div>
+                                <div className='playlist-bar-keys-right-space'></div>
+                            </div>
                         </div>
                     </div>
                     {allMyPlaylistsArr.map((playlist) => {
