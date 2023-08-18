@@ -7,13 +7,25 @@
 
 .video-bar-container {
     display: flex;
+    justify-content: space-between;
     /* border: 1px solid red; */
+}
+
+.video-bar-left {
+    display: flex;
 }
 
 .video-bar-vid {
     height: 5rem;
     width: 8rem;
-    /* border: 1px solid red; */
+    margin-right: 1rem;
+    border: 1px solid red;
+
+}
+
+.video-bar-title-description {
+    display: flex;
+    flex-direction: column;
 }
 
 .video-bar-functions {

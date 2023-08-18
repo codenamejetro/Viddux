@@ -34,11 +34,14 @@ function SignupFormPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (Object.values(errors)) {
+    console.log('1')
+    if (!Object.values(errors)) {
       setDisplayErrors(true)
+      console.log('2', errors)
     } else {
       const data = await dispatch(signUp(firstName, lastName, username, email, password));
-      history.push('/profile')
+      console.log('3')
+      history.push('/')
     }
   };
 
@@ -135,7 +138,7 @@ function SignupFormPage() {
 
               <div className='signup-form-bottom'>
                 <NavLink className='nav-link signup-form-bottom-login' to='/login'>Already have an account?</NavLink>
-                <button type="submit">Sign Up</button>
+                <button onClick={handleSubmit} type="submit">Sign Up</button>
               </div>
             </form>
 

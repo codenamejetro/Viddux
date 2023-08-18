@@ -56,7 +56,7 @@ function LoginFormPage() {
 
             <div className="login-bottom">
               <div className="login-bottom-top">
-                <button type="submit">Sign in</button>
+                <button onClick={handleSubmit} type="submit">Sign in</button>
               </div>
               <div className="login-bottom-bottom">
                 <NavLink className='nav-link login-signup' to='/signup'>

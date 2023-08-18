@@ -101,7 +101,7 @@ export const updateVideoThunk = (id, updatedVideo) => async (dispatch) => {
 }
 
 export const deleteVideoThunk = (videoId) => async (dispatch) => {
-	console.log('VIDEO DELETE THUNK',videoId)
+	console.log('VIDEO DELETE THUNK', videoId)
 	const response = await fetch(`/api/videos/${videoId}`, {
 		method: 'DELETE',
 		body: videoId
@@ -128,7 +128,8 @@ export default function videosReducer(state = initialState, action) {
 			newState = { ...state, singleVideo: { ...action.video } }
 			return newState
 		case CREATE_VIDEO:
-			newState = { ...state, singleVideo: { ...action.singleVideo } }
+			newState = { allVideos: { ...state.allVideos }, singleVideo: { ...state.singleVideo } }
+			newState.singleVideo = action.video
 			return newState
 		case UPDATE_VIDEO:
 			// newState = {
@@ -136,12 +137,12 @@ export default function videosReducer(state = initialState, action) {
 			// 	console.log('UPDATEVIDEO CASE ACTION', action)
 			// newState[action.video.id] = action.video;
 
-			newState = {allVideos: {...state.allVideos}, singleVideo: {...state.singleVideo}}
+			newState = { allVideos: { ...state.allVideos }, singleVideo: { ...state.singleVideo } }
 			newState.singleVideo = action.video
 
 			return newState;
 		case DELETE_VIDEO:
-			newState = {allVideos: { ...state.allVideos }, singleVideo: {...state.singleVideo} }
+			newState = { allVideos: { ...state.allVideos }, singleVideo: { ...state.singleVideo } }
 			delete newState.allVideos[action.videoId]
 
 			return newState

@@ -74,7 +74,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button onClick={handleSubmit} type="submit">Sign fUp</button>
 			</form>
 		</>
 	);

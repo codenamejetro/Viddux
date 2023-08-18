@@ -11,7 +11,12 @@ const VideoBar = ({ vid }) => {
     const dispatch = useDispatch()
     const history = useHistory()
 
+    const handleClick = () => {
+        // console.log('hjii')
+    }
+
     const handleDelete = (e) => {
+        // console.log('hjii')
         // e.preventDefault()
         dispatch(deleteVideoThunk(vid.id))
         // history.push('/profile/videos')
@@ -20,12 +25,17 @@ const VideoBar = ({ vid }) => {
     return (
         <div className='video-bar-outercontainer'>
             <div className="video-bar-container">
-                <div>
+                <div className='video-bar-left'>
                     <div className="video-bar-vid">
                         <video src={vid.mp4} > </video>
                     </div>
-                    <div className="video-bar-title">
-                        {vid.title}
+                    <div className='video-bar-title-description'>
+                        <div className="video-bar-title">
+                            {vid.title}
+                        </div>
+                        <div>
+                            {vid.description}
+                        </div>
                     </div>
                 </div>
 
@@ -35,6 +45,7 @@ const VideoBar = ({ vid }) => {
                 <div className='video-bar-functions'>
                     <div>
                         <OpenModalButton
+                            onClick={handleClick}
                             buttonText="Edit"
                             modalComponent={<UpdateVideo videoId={vid.id} />} />
                     </div>

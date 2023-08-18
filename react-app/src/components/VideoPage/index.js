@@ -9,6 +9,9 @@ import AddVideoToPlaylist from '../AddVideoToPlaylist'
 const VideoPage = () => {
     const { videoId } = useParams()
     const dispatch = useDispatch()
+
+    const user = useSelector(state => state.session.user)
+    console.log(user)
     const vid = useSelector(state => state.videos.singleVideo)
     const vidCreator = useSelector(state => state.videos.singleVideo.creator)
 
@@ -49,10 +52,13 @@ const VideoPage = () => {
                                 </div>
                             </div>
                             <div className='video-page-details-right'>
+
                                 <div className='video-page-addtoplaylist'>
-                                    <OpenModalButton
+                                    {user ? <OpenModalButton
                                         buttonText="Add to playlist"
-                                        modalComponent={<AddVideoToPlaylist videoId={vid.id} />} />
+                                        modalComponent={<AddVideoToPlaylist videoId={vid.id} />}
+                                        />
+                                        : <div></div>}
                                 </div>
                             </div>
                         </div>
