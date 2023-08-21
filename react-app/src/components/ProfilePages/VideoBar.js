@@ -10,6 +10,7 @@ import { formatDate } from '../../HelperFuncs/formatDate'
 const VideoBar = ({ vid }) => {
     const dispatch = useDispatch()
     const history = useHistory()
+    console.log('THEVID', vid)
 
     const handleClick = () => {
         // console.log('hjii')

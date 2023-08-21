@@ -46,7 +46,7 @@ export const getAllVideosThunk = () => async (dispatch) => {
 };
 
 export const getVideoThunk = (id) => async (dispatch) => {
-	console.log('IN GETBYID ID', typeof id)
+	// console.log('IN GETBYID ID',  typeof id)
 
 	const response = await fetch(`/api/videos/${id}`)
 	if (response.ok) {

@@ -47,13 +47,14 @@ const MyPlaylists = () => {
                             <NavLink className='nav-link my-content-all my-content-untoggled' to='/profile/videos'>Videos</NavLink>
                             <div className='my-content-all my-content-toggled' >Playlists</div>
                         </div>
-                        {/* <div className='my-videos-content-upload'>
+
+                        <div className='my-videos-content-upload'>
                             <div>
                                 <OpenModalButton
-                                    buttonText=""
+                                    buttonText="Create Playlist"
                                     modalComponent={<CreatePlaylist />} />
                             </div>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
 

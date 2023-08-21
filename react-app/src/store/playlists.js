@@ -5,9 +5,10 @@ const GET_PLAYLIST = 'playlists/GET_PLAYLIST'
 const ADD_VIDEO_TO_PLAYLIST = "playlists/ADD_VIDEO_TO_PLAYLIST";
 const CREATE_PLAYLIST = 'playlists/CREATE_PLAYLIST'
 const DELETE_PLAYLIST = 'playlists/DELETE_PLAYLIST'
+const REMOVE_VIDEO_FROM_PLAYLIST = 'playlists/REMOVE_VIDEO_FROM_PLAYLIST'
 const UPDATE_PLAYLIST = 'playlists/UPDATE_PLAYLIST'
 
-// const GET_USER_PLAYLISTS = "playlists/GET_USER_PLAYLISTS";
+const GET_USER_PLAYLISTS = "playlists/GET_USER_PLAYLISTS";
 
 
 const getAllPlaylistsAction = (playlists) => ({
@@ -35,6 +36,11 @@ const addVideoToPlaylistAction = (playlist) => ({
 const createPlaylistAction = (playlistId, playlist) => ({
     type: CREATE_PLAYLIST,
     playlistId,
+    playlist
+})
+
+const removeVideoFromPlaylistAction = (playlist) => ({
+    type: REMOVE_VIDEO_FROM_PLAYLIST,
     playlist
 })
 
@@ -83,7 +89,7 @@ export const getPlaylistThunk = (id) => async (dispatch) => {
         if (data.errors) {
             return
         }
-        // console.log("DATAAAA ", data)
+        console.log("DATAAAA ", data)
         dispatch(getPlaylistAction(data))
     }
 }
@@ -106,7 +112,7 @@ export const createPlaylistThunk = (playlist) => async (dispatch) => {
 }
 
 export const addVideoToPlaylistThunk = (playlistId, videoId) => async (dispatch) => {
-    const response = await fetch(`/api/playlists/${playlistId}/songs/${videoId}`, {
+    const response = await fetch(`/api/playlists/${playlistId}/videos/${videoId}`, {
         method: "POST",
     });
 
@@ -140,6 +146,21 @@ export const updatePlaylistThunk = (playlistId, updatedPlaylist) => async (dispa
 }
 
 
+export const removeVideoFromPlaylistThunk = (playlistId, videoId) => async (dispatch) => {
+    const response = await fetch(`/api/playlists/${playlistId}/videos/${videoId}`, {
+        method: "DELETE",
+    });
+
+    if (response.ok) {
+        const updatedPlaylist = await response.json();
+        if (updatedPlaylist.errors) {
+            return
+        }
+
+        dispatch(removeVideoFromPlaylistAction(updatedPlaylist));
+    }
+}
+
 export const deletePlaylistThunk = (playlistId) => async (dispatch) => {
     const response = await fetch(`/api/playlists/${playlistId}`, {
         method: 'DELETE',
@@ -161,10 +182,12 @@ export default function playlistsReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case GET_ALLPLAYLISTS:
-            console.log('action in GETALLPLAYLISTS', action)
+            // console.log('action in GETALLPLAYLISTS', action)
             newState = { allPlaylists: { ...action.allPlaylists }, singlePlaylist: { ...state.singlePlaylist } }
             action.playlists.playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
             return newState
+
+
 
         case ADD_VIDEO_TO_PLAYLIST:
                 newState = { ...state }
@@ -187,6 +210,11 @@ export default function playlistsReducer(state = initialState, action) {
 
 			return newState;
         }
+
+        case REMOVE_VIDEO_FROM_PLAYLIST:
+                newState = { ...state }
+                newState.singlePlaylist = { ...action.playlist }
+                return newState
 
         case DELETE_PLAYLIST:
             newState = { allPlaylists: { ...state.allPlaylists }, singlePlaylist: { ...state.singlePlaylist } }

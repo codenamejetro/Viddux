@@ -10,12 +10,15 @@ const PlaylistPage = () => {
     const { playlistId } = useParams()
 
     const playlist = useSelector(state => state.playlists.singlePlaylist)
+    // const playlistVids = playlist.videos
+    // console.log('grgnrf', playlist)
 
     useEffect(() => {
         dispatch(getPlaylistThunk(playlistId))
     }, [dispatch])
 
     if (!playlist.user ) return null
+    // if (!vid.creator) return null
     return (
         <>
             <div className='playlist-page-wrapper'>
@@ -35,8 +38,10 @@ const PlaylistPage = () => {
 
 
                     <div className='playlist-page-right'>
-                        {playlist.videos.map(vid => {
-                            return <VidInPlaylist vid={vid}/>
+                        {playlist.videos.map((vid) => {
+                            // console.log('video', vid)
+                            return <VidInPlaylist vid={vid} playlistId={playlistId}
+                             />
                         })}
 
                     </div>

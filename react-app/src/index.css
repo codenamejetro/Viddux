@@ -2,13 +2,13 @@ body {
     min-height: 44rem;
     /* border: 1px solid yellow; */
     background-color: #0f0f0f;
-    color: #4c1892;
+    color: #5d3099;
 
 }
 
 button {
     border: none;
-    color: rgb(94, 94, 94);
+    color: rgb(155, 153, 153);
     background-color: #4c1892;
     /* padding: 5px 6px; */
     border-radius: 3px;

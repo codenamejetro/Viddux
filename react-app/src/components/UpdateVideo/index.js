@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { getVideoThunk, updateVideoThunk } from '../../store/videos'
 
 const UpdateVideo = ({ videoId }) => {
+    const singleVideo = useSelector((state) => state.videos.allVideos[videoId]);
     const dispatch = useDispatch()
     const history = useHistory()
     const video = useSelector(state => state.videos.singleVideo)
@@ -14,8 +15,19 @@ const UpdateVideo = ({ videoId }) => {
     const [displayErr, setDisplayErr] = useState(false)
 
 
+    useEffect(() => {
+        if (video) {
+            setTitle(singleVideo.title)
+            setDescription(singleVideo.description)
+        }
+    },[])
+
+    useEffect(() => {
+        dispatch(getVideoThunk(videoId))
+    }, [dispatch])
+
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         if (Object.keys(err).length > 0) {
             setDisplayErr(true)
             return
@@ -44,16 +56,18 @@ const UpdateVideo = ({ videoId }) => {
 
     // }, [dispatch, videoId]);
 
-    useEffect(() => {
-        const fetchSongDetails = async () => {
-            dispatch(getVideoThunk(videoId));
-            if (video && video !== undefined) {
-                setTitle(video.title)
-                setDescription(video.description)
-            }
-        }
-        fetchSongDetails();
-    }, [dispatch, video, videoId]);
+    // useEffect(() => {
+    //     const fetchSongDetails = async () => {
+    //         dispatch(getVideoThunk(videoId));
+    //         if (video && video !== undefined) {
+    //             setTitle(video.title)
+    //             setDescription(video.description)
+    //         }
+    //     }
+    //     fetchSongDetails();
+    // }, [dispatch, video, videoId]);
+
+
 
     return (
         <>

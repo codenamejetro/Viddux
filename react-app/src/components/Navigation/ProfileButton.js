@@ -11,6 +11,11 @@ function ProfileButton({ user }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
 
+  const alert = () => {
+    window.alert("Coming soon!")
+    return
+}
+
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
@@ -47,14 +52,18 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <div className="profile-dropdown-inner">
-              <NavLink className="nav-link profile-dropdown-inner-li" to='/profile'>
+              <div className="nav-link profile-dropdown-inner-li" onClick={alert}>
                 <i className="fa-solid fa-image-portrait"></i>
                 <div>&nbsp;Your channel</div>
-              </NavLink>
-              <li className="profile-dropdown-inner-li">
+                </div>
+              {/* <NavLink className="nav-link profile-dropdown-inner-li" to='/profile'>
+                <i className="fa-solid fa-image-portrait"></i>
+                <div>&nbsp;Your channel</div>
+              </NavLink> */}
+              {/* <li className="profile-dropdown-inner-li">
                 <i className="fa-solid fa-paint-roller"></i>
                 <div>Appearance</div>
-              </li>
+              </li> */}
               <li className="profile-dropdown-inner-li" onClick={handleLogout}>
                 <i className="fa-solid fa-arrow-right-from-bracket"></i>
                 <div>Sign Out</div>

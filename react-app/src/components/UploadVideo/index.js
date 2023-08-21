@@ -36,6 +36,7 @@ const UploadVideo = () => {
         e.preventDefault();
         if (Object.keys(err).length > 0) {
             setDisplayErr(true)
+            console.log('hiii', err)
             return
         }
         else {

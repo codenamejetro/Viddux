@@ -10,15 +10,19 @@ import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
 const MyVideos = () => {
     const dispatch = useDispatch()
     const currUser = useSelector(state => state.session.user)
-    // console.log("Current User Obj", currUser)
+    console.log("Current User Obj", currUser)
     const allVids = useSelector(state => state.videos.allVideos)
+    console.log('1', allVids)
     const allVidsArr = Object.values(allVids)
+    console.log('2', allVidsArr)
     // console.log("All videos", allVidsArr)
 
     const allMyVids = allVidsArr.filter(vid => {
+        // console.log('ALLMYVIDS', vid)
+        console.log('4', vid.user_id, '5', currUser.id)
         return vid.user_id === currUser.id
     })
-    // console.log("All my videos", allMyVids)
+    console.log("3", allMyVids)
 
     useEffect(() => {
         dispatch(getAllVideosThunk())
@@ -63,6 +67,7 @@ const MyVideos = () => {
 
                 <div className='my-videos-content-bottom'>
                     {allMyVids.map((vid) => {
+                        // console.log('THEVIDINMY', vid)
                         return <VideoBar vid={vid} />
                     })}
                 </div>

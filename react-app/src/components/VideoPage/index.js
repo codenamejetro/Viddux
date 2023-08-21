@@ -11,7 +11,7 @@ const VideoPage = () => {
     const dispatch = useDispatch()
 
     const user = useSelector(state => state.session.user)
-    console.log(user)
+    // console.log(user)
     const vid = useSelector(state => state.videos.singleVideo)
     const vidCreator = useSelector(state => state.videos.singleVideo.creator)
 

@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, redirect, request
+from sqlalchemy import delete
 from flask_login import login_required, current_user
 from app.forms.playlist_form import PlaylistForm
 from app.models import Playlist, Video, User, playlist_videos
@@ -86,6 +87,7 @@ def add_video_to_playlist(playlist_id, video_id):
     return {"success": "Video added to the playlist"}
 
 
+
 #Update playlist
 @playlists_routes.route('/<int:id>', methods=["PUT"])
 def update_playlist(id):
@@ -119,6 +121,26 @@ def update_playlist(id):
 
     return {"errors": form.errors}
 
+
+#Remove video from playlist
+@playlists_routes.route('/<int:playlist_id>/videos/<int:video_id>', methods=['DELETE'])
+def remove_video_from_playlist(playlist_id, video_id):
+    playlist = Playlist.query.get(playlist_id)
+    video = Video.query.get(video_id)
+    # playlist_vids = playlist
+
+    # the_row = db.session.query(playlist_videos).filter(playlist_id == playlist_id)
+    # print('THE_ROW', the_row)
+    if not playlist or not video:
+        return {"error": "Playlist or Video not found"}, 404
+
+    # Remove the video from the playlist
+    dele = delete(playlist_videos).where(playlist_videos.c.video_id == video_id)
+
+    db.session.execute(dele)
+    db.session.commit()
+
+    return {"success": "Video removed from playlist"}
 
 #Delete playlist
 @playlists_routes.route('/<int:id>', methods=['DELETE'])
